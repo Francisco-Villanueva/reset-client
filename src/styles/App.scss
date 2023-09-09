@@ -1,0 +1,15 @@
+@import "./colors_ligth.scss";
+@import "./colors_dark.scss";
+
+.app {
+  transition: all 0.15s;
+}
+.section_page {
+  min-height: 100vh;
+  display: grid;
+  // place-items: center;
+}
+.dark {
+  background-color: $main;
+  color: $text;
+}

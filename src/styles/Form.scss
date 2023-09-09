@@ -1,0 +1,61 @@
+@import "./colors_ligth.scss";
+@import "./colors_dark.scss";
+
+.form_main {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  // margin: 50px auto;
+  padding-top: 150px;
+  // background-color: cadetblue;
+}
+
+.form_main input {
+  border: none;
+  outline: none;
+  padding: 1em;
+  border-radius: 10px;
+}
+
+.client_data {
+  display: flex;
+  gap: 1em;
+}
+
+.form_section {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 0;
+}
+
+.turno_live_info {
+  background-color: rgba(255, 0, 0, 0.096);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+.turno_live_info div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.turno_live_info div span {
+  outline: 1px solid #fff;
+}
+.btn_submit {
+  padding: 12px;
+  border-radius: 7px;
+  border: none;
+  transition: all 0.15s;
+
+  cursor: pointer;
+}
+
+.btn_submit:hover {
+  background-color: #fff;
+  color: #000;
+}
