@@ -9,17 +9,17 @@ export default function Cards({
   handleBarber,
   client,
 }) {
-  const [barb, setAlignment] = React.useState(1);
+  const [barb, setBarb] = React.useState(1);
   const [hs, setHs] = React.useState("");
 
   const handleBarb = (event, newBarb) => {
-    setAlignment(newBarb);
+    setBarb(newBarb);
   };
 
   const handleHs = (e, newHs) => {
-    console.log(newHs);
     setHs(newHs);
   };
+
   return (
     <>
       {barbers && (
@@ -29,22 +29,24 @@ export default function Cards({
           color="primary"
           onChange={handleBarb}
         >
-          {barbers?.map((m) => (
-            // <Card barber={m} key={m.id} handleBarber={handleBarber} />
-            <ToggleButton
-              key={m.id}
-              value={m.id}
-              onClick={() => handleBarber(m.id)}
-            >
-              {m.barber_firstName}
-            </ToggleButton>
-          ))}
+          {barbers
+            .sort((a, b) => a.id - b.id)
+            ?.map((m) => (
+              // <Card barber={m} key={m.id} handleBarber={handleBarber} />
+              <ToggleButton
+                key={m.id}
+                value={m.id}
+                onClick={() => handleBarber(m.id)}
+              >
+                {m.name}
+              </ToggleButton>
+            ))}
         </ToggleButtonGroup>
       )}
       <div>
         <ToggleButtonGroup
           size="small"
-          value={hs}
+          value={client.time}
           exclusive
           color="primary"
           onChange={handleHs}
@@ -52,16 +54,16 @@ export default function Cards({
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",
             gap: "1em",
-            // background: "red",
           }}
         >
           {turnos?.map((m) => (
             <ToggleButton
-              key={m.id}
-              value={m.horario_value}
-              onClick={() => handleTime(m.horario_value)}
+              key={m.hs}
+              value={m.hs}
+              onClick={() => handleTime(m.hs)}
+              disabled={!m.avaliable}
             >
-              {m.horario_label}
+              {m.hs}
             </ToggleButton>
           ))}
         </ToggleButtonGroup>

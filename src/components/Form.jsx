@@ -11,9 +11,9 @@ export default function Form({ barberos }) {
   const { setTurno, getHorarios, horarios } = useContext(BarberContext);
   const { currentDay } = useDate();
   const [client, setClient] = useState({
-    client_name: "",
-    client_email: "",
-    client_number: "",
+    name: "",
+    email: "",
+    phone: "",
     date: currentDay,
     time: "",
     barberId: 1,
@@ -21,34 +21,30 @@ export default function Form({ barberos }) {
 
   useEffect(() => {
     getHorarios(client.barberId, client.date);
-    // console.log(client);
   }, [client]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     setClient({
-      client_name: "",
-      client_email: "",
-      client_number: "",
+      name: "",
+      email: "",
+      phone: "",
       date: client.date,
       time: "",
-      barberId: 1,
+      // barberId: 1,
     });
     return setTurno(client);
   };
 
   const handleInputChange = (e) => {
-    console.log({ value: e.target.value, name: e.target.name });
     setClient((state) => ({ ...state, [e.target.name]: e.target.value }));
   };
 
   const handleTime = (time) => {
-    // console.log("handleTime : ", time);
     setClient((state) => ({ ...state, ["time"]: time }));
   };
   const handleBarber = (barb) => {
-    // console.log({ barb });
     setClient((state) => ({ ...state, ["barberId"]: barb }));
   };
 
@@ -80,7 +76,7 @@ export default function Form({ barberos }) {
           Submit
         </button>
 
-        <Loadingbutton handler={handleSubmit} />
+        {/* <Loadingbutton handler={handleSubmit} /> */}
       </form>
     </div>
   );

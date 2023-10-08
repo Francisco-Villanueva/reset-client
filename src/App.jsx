@@ -9,6 +9,7 @@ import useDate from "./hooks/useDate";
 import { Routes, Route, Link } from "react-router-dom";
 import ListaTurnos from "./components/Lista de turnos/ListaTurnos";
 import { ThemeContext } from "./context/ThemeContext";
+import DeleteTurno from "./components/DeleteTurno";
 function App() {
   const [count, setCount] = useState(0);
   const { currentDay } = useDate();
@@ -21,7 +22,6 @@ function App() {
   }, []);
 
   const { theme } = useContext(ThemeContext);
-  console.log(theme);
   return (
     <div className={`app ${theme}`}>
       <Routes>
@@ -32,24 +32,13 @@ function App() {
             <>
               <Navbar />
               <Home />
-              <Galery />
 
               <Form barberos={barberos} horarios={horarios} />
-              <Link to={`/turnos/${1}`}>
-                <button>Turnos Laucha</button>
-              </Link>
-              <Link to={`/turnos/${2}`}>
-                <button>Turnos Nahue</button>
-              </Link>
             </>
           }
         />
 
-        <Route
-          exact
-          path="/turnos/:id"
-          element={<ListaTurnos barberos={barberos} />}
-        />
+        <Route exact path="/turnos/:id" element={<DeleteTurno />} />
       </Routes>
     </div>
   );

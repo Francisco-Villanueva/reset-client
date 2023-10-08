@@ -6,9 +6,8 @@ import Swal from "sweetalert2";
 const initialState = {
   barbers: [],
   horarios: [],
-  singleBarber: [],
 };
-
+const API_URL = "http://localhost:4000/api";
 export const BarberContext = createContext(initialState);
 
 export function BarberProvider({ children }) {
@@ -16,28 +15,13 @@ export function BarberProvider({ children }) {
     barberos: [],
     horarios: [],
     singleBarber: [],
-    dayByBarber: [],
+    turnoData: {},
   });
 
   const getAllBarbers = async () => {
     try {
-      const barbers_res = await axios.get("http://localhost:3000/barbers");
-      // console.log("EN CONTEXT : ", barbers_res);
+      const barbers_res = await axios.get(`${API_URL}/barbers`);
       setState((state) => ({ ...state, ["barberos"]: barbers_res.data }));
-      return barbers_res.data;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getBarber_byId = async (id) => {
-    try {
-      const barbers_res = await axios.get(
-        `http://localhost:3000/barbers/${id}`
-      );
-      // console.log("EN CONTEXT : ", barbers_res.data);
-      setState((state) => ({ ...state, ["singleBarber"]: barbers_res.data }));
-
       return barbers_res.data;
     } catch (error) {
       console.log(error);
@@ -46,26 +30,11 @@ export function BarberProvider({ children }) {
 
   const setTurno = async (data) => {
     try {
-      const res_turno = await axios.post("http://localhost:3000/turnos", data);
+      const res_turno = await axios.post(`${API_URL}/appointment`, data);
 
-      /*  res_truno.data: 
-     
-          {
-        "id": 1,
-        "client_name": "Pancho",
-        "client_email": "franciscovillanuevaj99@gmail.com",
-        "client_number": "2915275753",
-        "time": "18:00",
-        "date": "2023-11-02",
-        "barberId": 1,
-        "dayId": 5,
-        "isBooked": true
-      }
-          */
+      const { barberId, date } = data;
 
-      const { barberId, date } = res_turno.data;
-
-      getHorarios(barberId, date);
+      await getHorarios(barberId, date);
 
       message.success(`Turno agendado! ${data.date} a las ${data.time} hs `, 5);
 
@@ -77,17 +46,14 @@ export function BarberProvider({ children }) {
     }
   };
 
-  const getHorarios = async (barberId, day) => {
+  const getHorarios = async (barberId, date) => {
     try {
       const allHorarios = await axios.get(
-        `http://localhost:3000/horarios/${barberId}/${day}`
+        `${API_URL}/hours/${barberId}/${date}`
       );
-
-      // console.log("GET HORARIOS: ", allHorarios.data);
-
       setState((state) => ({
         ...state,
-        ["horarios"]: allHorarios.data.sort((a, b) => a.id - b.id),
+        horarios: allHorarios.data,
       }));
 
       return allHorarios.data;
@@ -96,22 +62,34 @@ export function BarberProvider({ children }) {
     }
   };
 
-  const getDaysByBarberId = async (id) => {
+  const getOneTurno = async (id, navTo) => {
     try {
-      const days_byBarber = await axios.get(
-        `http://localhost:3000/days_barber/${id}`
+      const turno = await axios.get(
+        `http://localhost:4000/api/appointment/${id}`
       );
 
-      // console.log({days_byBarber});
+      setState((s) => ({ ...s, turnoData: turno.data }));
 
-      const response = days_byBarber.data.sort(
-        (a, b) => new Date(a.day_date) - new Date(b.day_date)
-      );
-      setState((state) => ({ ...state, ["dayByBarber"]: response }));
+      if (!turno.data) {
+        navTo("/");
+      }
+
+      return turno.data;
     } catch (error) {
-      console.log({ error });
+      console.log(error);
     }
   };
+
+  const deleteTurno = async (id) => {
+    try {
+      await axios.delete(`http://localhost:4000/api/appointment/${id}`);
+
+      message.info("Turno cancelado!", 1);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <BarberContext.Provider
       value={{
@@ -119,8 +97,8 @@ export function BarberProvider({ children }) {
         getAllBarbers,
         setTurno,
         getHorarios,
-        getBarber_byId,
-        getDaysByBarberId,
+        getOneTurno,
+        deleteTurno,
       }}
     >
       {children}
