@@ -68,7 +68,14 @@ export function BarberProvider({ children }) {
         `http://localhost:4000/api/appointment/${id}`
       );
 
-      setState((s) => ({ ...s, turnoData: turno.data }));
+      const barber = turno.data
+        ? await axios.get(`${API_URL}/barbers/${turno.data.barberId}`)
+        : null;
+
+      setState((s) => ({
+        ...s,
+        turnoData: { ...turno.data, barber: barber?.data.name },
+      }));
 
       if (!turno.data) {
         navTo("/");

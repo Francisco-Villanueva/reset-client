@@ -61,8 +61,7 @@ export default function DeleteTurno() {
             Horario: <b> {turnoData.time}</b>
           </p>
           <p>
-            Peluquero:{" "}
-            <b> {turnoData.barberId === 1 ? "Lautaro" : "Nahuel"} </b>
+            Peluquero: <b> {turnoData.barber} </b>
           </p>
 
           <button
