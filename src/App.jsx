@@ -40,22 +40,12 @@ function App() {
               <section className="grid place-items-center min-h-[100vh] relative bg-black  ">
                 <AboutUs />
               </section>
-              <section className="grid place-items-center min-h-[10vh] relative  ">
-                {!isModalOpen && (
-                  <button
-                    className="absolute top-10 left-10 bg-selected text-white p-2 rounded-md"
-                    onClick={openModal}
-                  >
-                    SACAR TURNO
-                  </button>
-                )}
-                {isModalOpen && (
-                  <Form
-                    barberos={barberos}
-                    horarios={horarios}
-                    closeModal={closeModal}
-                  />
-                )}
+              <section className="grid place-items-center min-h-[100vh]     ">
+                <Form
+                  barberos={barberos}
+                  horarios={horarios}
+                  closeModal={closeModal}
+                />
               </section>
 
               <section>

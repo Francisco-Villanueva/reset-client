@@ -33,7 +33,7 @@ export default function Input({
         className={`w-full  h-14 py-2 rounded-xl border ${
           value !== "" && selcetdColors
         } ${
-          error ? "border-black" : ""
+          error ? "border-selected" : ""
         } text-black p-4  font-sans focus:outline-none`}
       />
 
@@ -54,7 +54,7 @@ export default function Input({
       )}
 
       {touched && error ? (
-        <p className=" ml-4  text-black text-sm  ">{error}</p>
+        <p className=" ml-4  text-selected text-sm  ">{error}</p>
       ) : null}
     </div>
   );

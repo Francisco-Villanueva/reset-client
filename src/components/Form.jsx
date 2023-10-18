@@ -11,6 +11,8 @@ import useInput from "../hooks/useInput";
 import { isAnyPropertyEmpty } from "../utils/isObjectEmpty";
 import ProgressBar from "../commons/ProgressBar";
 import { IconX } from "../commons/Icons";
+import ListOfBarbers from "./ListOfBarbers";
+import ListOfHours from "./ListOfHours";
 
 export default function Form({ barberos, closeModal }) {
   const { setTurno, getHorarios, horarios } = useContext(BarberContext);
@@ -88,50 +90,35 @@ export default function Form({ barberos, closeModal }) {
 
   return (
     <form
-      className="  flex flex-col  gap-4 w-[60%] my-10 p-4 rounded-md relative"
+      className="  flex flex-col border gap-2  w-[60%] p-4 rounded-md relative"
       onSubmit={handleSubmit}
     >
-      <button
-        className="absolute right-5 bg-black rounded-full p-1 text-white"
-        onClick={closeModal}
-      >
-        <IconX />
-      </button>
-      <h2 className="text-[2rem] m-auto my-0">SACAR TURNO</h2>
-      <ProgressBar progress={progress} />
-      <div className="flex justify-around ">
-        <section className="max-w-[60%]">
-          <div className="flex    overflow-x-auto  scrollStyle ">
-            {barberos
-              .sort((a, b) => a.id - b.id)
-              .map((barber) => (
-                <BarberCard
-                  className="w-1/2 px-6"
-                  barber={barber}
-                  handleBarber={handleBarber}
-                  selected={client.barberId === barber.id}
-                />
-              ))}
-          </div>
+      <header>
+        <h2 className="text-[2rem] m-auto my-0">SACAR TURNO</h2>
+        <ProgressBar progress={progress} />
+      </header>
+      <section className="flex justify-around ">
+        <aside className="flex flex-col max-w-[60%]">
+          <ListOfBarbers
+            barberos={barberos}
+            handleBarber={handleBarber}
+            client={client}
+          />
           <Calendar
             value={client.date}
             handleDate={handleDate}
             disabled={client.barberId === ""}
           />
-          <div className="grid grid-cols-4 gap-2 ">
-            {horarios.map((time) => (
-              <TimeCard
-                disabled={client.barberId === ""}
-                time={time}
-                selected={client.time === time.hs}
-                handleTime={handleTime}
-              />
-            ))}
-          </div>
-        </section>
+          <ListOfHours
+            client={client}
+            handleTime={handleTime}
+            horarios={horarios}
+          />
+        </aside>
 
-        <section className="flex flex-col gap-4">
-          <h3 className="text-[1.1rem]">Completar con tus datos</h3>
+        <aside className="flex flex-col gap-4">
+          <h3 className="text-[1.1rem]">Tus datos</h3>
+          <hr />
           <div className="flex flex-col gap-2 ">
             <Input
               {...nameInput}
@@ -153,14 +140,14 @@ export default function Form({ barberos, closeModal }) {
               selcetdColors="text-white bg-selected"
             />
           </div>
-        </section>
-      </div>
+        </aside>
+      </section>
       <button
         type="submit"
         disabled={Math.trunc(progress) !== 100}
         className={` transition-all w-[40%] m-auto duration-200 rounded-md  p-4  ${
           Math.trunc(progress) !== 100
-            ? "bg-disabled  "
+            ? "border  text-disabled "
             : " border  text-selected border-selected   hover:text-white hover:bg-selected"
         }`}
       >
