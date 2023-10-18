@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BarberContext } from "../context/BarberContext";
+import logoCircular from "../images/RESET_C_negro.png";
 
 export default function DeleteTurno() {
   const [turno, setTurno] = useState({
@@ -15,7 +16,6 @@ export default function DeleteTurno() {
   const { getOneTurno, turnoData, deleteTurno } = useContext(BarberContext);
   const { id } = useParams();
   const navTo = useNavigate();
-  console.log({ turnoData });
   useEffect(() => {
     getOneTurno(id, navTo);
   }, [id]);
@@ -27,58 +27,37 @@ export default function DeleteTurno() {
     }, 1000);
   };
   return (
-    <div
-      style={{
-        display: "grid",
-        placeItems: "center",
-        gap: "1em",
-        height: "100vh",
-        width: "100vw",
-        background: "#cecece",
-      }}
-    >
+    <div className="grid place-items-center  h-[100vh] w-full">
       {turnoData.id ? (
-        <div
-          style={{
-            boxShadow: "1px 1px 5px rgba(0,0,0,.5)",
-            borderRadius: "8px",
-            padding: "1em",
-            margin: "auto",
-            background: "#fff",
-          }}
-        >
-          <h2>Cancelacion de turno | RESET - Hair Studio</h2>
+        <div className="flex flex-col gap-4 w-[50%] h-[50%] border rounded-md p-4 justify-around relative">
+          <div className="flex items-center gap-4">
+            <img src={logoCircular} alt="logoCircular" className="w-[10%] " />
+            <h2 className="text-3xl">
+              Cancelacion de turno | RESET - Hair Studio
+            </h2>
+          </div>
 
-          <i>Una vez cancelado el turno no hay vuelta atras pa!</i>
           <hr />
-          <p>
-            Nombre: <b> {turnoData.name}</b>
-          </p>
-          <p>
-            Fehca: <b> {turnoData.date}</b>
-          </p>
-          <p>
-            Horario: <b> {turnoData.time}</b>
-          </p>
-          <p>
-            Peluquero: <b> {turnoData.barber} </b>
-          </p>
 
+          <div className="text-xl">
+            <p>
+              Nombre: <b> {turnoData.name}</b>
+            </p>
+            <p>
+              Fehca: <b> {turnoData.date}</b>
+            </p>
+            <p>
+              Horario: <b> {turnoData.time}</b>
+            </p>
+            <p>
+              Peluquero: <b> {turnoData.barber} </b>
+            </p>
+          </div>
           <button
             onClick={handleDelete}
-            style={{
-              border: "1px solid #cecece",
-              fontFamily: "inherit",
-              width: "100%",
-              padding: ".5em",
-              borderRadius: "5px",
-              background: "#fe0000",
-              fontWeight: 600,
-              color: "#fff",
-              cursor: "pointer",
-            }}
+            className="border bg-selected w-full p-4 rounded-md text-white"
           >
-            Eliminar
+            Canelar turno
           </button>
         </div>
       ) : (

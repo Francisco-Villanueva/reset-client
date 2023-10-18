@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 export default function useDate() {
   const dia = new Date();
 
@@ -12,7 +10,7 @@ export default function useDate() {
 
   function formatoFecha(fechaStr) {
     try {
-      const fecha = new Date(fechaStr);
+      let fecha = fechaStr;
       const diasSemana = [
         "Domingo",
         "Lunes",
@@ -36,15 +34,19 @@ export default function useDate() {
         "Noviembre",
         "Diciembre",
       ];
-      const dia = diasSemana[fecha.getDay() + 1];
-      const mes = meses[fecha.getMonth()];
-      const numero = fechaStr.split("-")[2];
+      if (!typeof fechaStr === "object") {
+        fecha = new Date(fechaStr);
+      }
+
+      const mes = fecha.getMonth() + 1;
+      const numero = fechaStr.getDate();
       const year = fecha.getFullYear();
 
-      const respuest = `${dia} ${numero} ${mes}`;
+      const res = `${year}-${mes}-${numero}`;
 
-      return respuest;
+      return res;
     } catch (error) {
+      console.log(error);
       return "Fecha no válida";
     }
   }

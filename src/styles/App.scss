@@ -1,5 +1,9 @@
 @import "./colors_ligth.scss";
 @import "./colors_dark.scss";
+/* src/styles/tailwind.css */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 .app {
   transition: all 0.15s;

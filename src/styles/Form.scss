@@ -59,3 +59,21 @@
   background-color: #fff;
   color: #000;
 }
+
+/* Estilo para la barra de desplazamiento */
+.scrollStyle::-webkit-scrollbar {
+  width: 1px; /* Ancho de la barra de desplazamiento */
+  height: 3px; /* Ancho de la barra de desplazamiento */
+}
+
+.scrollStyle::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color de fondo de la pista */
+}
+
+.scrollStyle::-webkit-scrollbar-thumb {
+  background: #1e1e1e; /* Color del pulgar de la barra de desplazamiento */
+}
+
+.scrollStyle::-webkit-scrollbar-thumb:hover {
+  background: #000; /* Color del pulgar en hover */
+}

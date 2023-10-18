@@ -1,9 +1,11 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  // color-scheme: light dark;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,4 +15,25 @@
 }
 body {
   margin: 0 auto;
+}
+/* Estilo para la barra de desplazamiento */
+::-webkit-scrollbar {
+  width: 4px; /* Ancho de la barra */
+}
+
+/* Estilo para el fondo de la barra de desplazamiento */
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Color de fondo */
+}
+
+/* Estilo para el agarre (scrollbar thumb) */
+::-webkit-scrollbar-thumb {
+  background-color: #1e1e1e; /* Color del agarre */
+  border-radius: 5px; /* Borde redondeado */
+}
+
+/* Cambia el color de la barra en Firefox */
+body {
+  scrollbar-width: thin;
+  scrollbar-color: #1e1e1e #f1f1f1;
 }

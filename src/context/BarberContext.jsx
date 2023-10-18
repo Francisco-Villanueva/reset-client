@@ -30,7 +30,7 @@ export function BarberProvider({ children }) {
 
   const setTurno = async (data) => {
     try {
-      const res_turno = await axios.post(`${API_URL}/appointment`, data);
+      await axios.post(`${API_URL}/appointment`, data);
 
       const { barberId, date } = data;
 
@@ -51,6 +51,8 @@ export function BarberProvider({ children }) {
       const allHorarios = await axios.get(
         `${API_URL}/hours/${barberId}/${date}`
       );
+
+      console.log({ allHorarios });
       setState((state) => ({
         ...state,
         horarios: allHorarios.data,

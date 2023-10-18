@@ -10,6 +10,9 @@ import { Routes, Route, Link } from "react-router-dom";
 import ListaTurnos from "./components/Lista de turnos/ListaTurnos";
 import { ThemeContext } from "./context/ThemeContext";
 import DeleteTurno from "./components/DeleteTurno";
+import Footer from "./components/Footer";
+import AboutUs from "./components/AboutUs";
+import useModal from "./hooks/useModal";
 function App() {
   const [count, setCount] = useState(0);
   const { currentDay } = useDate();
@@ -22,6 +25,7 @@ function App() {
   }, []);
 
   const { theme } = useContext(ThemeContext);
+  const { openModal, isModalOpen, closeModal } = useModal();
   return (
     <div className={`app ${theme}`}>
       <Routes>
@@ -33,7 +37,30 @@ function App() {
               <Navbar />
               <Home />
 
-              <Form barberos={barberos} horarios={horarios} />
+              <section className="grid place-items-center min-h-[100vh] relative bg-black  ">
+                <AboutUs />
+              </section>
+              <section className="grid place-items-center min-h-[10vh] relative  ">
+                {!isModalOpen && (
+                  <button
+                    className="absolute top-10 left-10 bg-selected text-white p-2 rounded-md"
+                    onClick={openModal}
+                  >
+                    SACAR TURNO
+                  </button>
+                )}
+                {isModalOpen && (
+                  <Form
+                    barberos={barberos}
+                    horarios={horarios}
+                    closeModal={closeModal}
+                  />
+                )}
+              </section>
+
+              <section>
+                <Footer />
+              </section>
             </>
           }
         />
