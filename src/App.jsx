@@ -33,25 +33,14 @@ function App() {
           exact
           path="/"
           element={
-            <>
-              <Navbar />
+            <div>
               <Home />
+              <AboutUs />
 
-              <section className="grid place-items-center min-h-[100vh] relative bg-black  ">
-                <AboutUs />
-              </section>
-              <section className="grid place-items-center min-h-[100vh]     ">
-                <Form
-                  barberos={barberos}
-                  horarios={horarios}
-                  closeModal={closeModal}
-                />
-              </section>
+              <Form />
 
-              <section>
-                <Footer />
-              </section>
-            </>
+              <Footer />
+            </div>
           }
         />
 

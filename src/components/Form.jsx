@@ -13,9 +13,11 @@ import ProgressBar from "../commons/ProgressBar";
 import { IconX } from "../commons/Icons";
 import ListOfBarbers from "./ListOfBarbers";
 import ListOfHours from "./ListOfHours";
+import Layout from "../commons/Layout";
 
-export default function Form({ barberos, closeModal }) {
-  const { setTurno, getHorarios, horarios } = useContext(BarberContext);
+export default function Form({}) {
+  const { setTurno, getHorarios, horarios, barberos } =
+    useContext(BarberContext);
   const { currentDay, formatoFecha } = useDate();
   const nameInput = useInput("", "required");
   const mailInput = useInput("", "required");
@@ -89,70 +91,79 @@ export default function Form({ barberos, closeModal }) {
   };
 
   return (
-    <form
-      className="  flex flex-col border gap-2  w-[60%] p-4 rounded-md relative"
-      onSubmit={handleSubmit}
-    >
-      <header>
-        <h2 className="text-[2rem] m-auto my-0">SACAR TURNO</h2>
-        <ProgressBar progress={progress} />
-      </header>
-      <section className="flex justify-around ">
-        <aside className="flex flex-col max-w-[60%]">
-          <ListOfBarbers
-            barberos={barberos}
-            handleBarber={handleBarber}
-            client={client}
-          />
-          <Calendar
-            value={client.date}
-            handleDate={handleDate}
-            disabled={client.barberId === ""}
-          />
-          <ListOfHours
-            client={client}
-            handleTime={handleTime}
-            horarios={horarios}
-          />
-        </aside>
-
-        <aside className="flex flex-col gap-4">
-          <h3 className="text-[1.1rem]">Tus datos</h3>
-          <hr />
-          <div className="flex flex-col gap-2 ">
-            <Input
-              {...nameInput}
-              title={"Nombre"}
-              type={"text"}
-              className="text-white bg-selected"
-              selcetdColors="text-white bg-selected"
-            />
-            <Input
-              {...mailInput}
-              title="Email"
-              type={"email"}
-              selcetdColors="text-white bg-selected"
-            />
-            <Input
-              {...phoneInput}
-              title="Telefono"
-              type={"number"}
-              selcetdColors="text-white bg-selected"
-            />
-          </div>
-        </aside>
-      </section>
-      <button
-        type="submit"
-        disabled={Math.trunc(progress) !== 100}
-        className={` transition-all w-[40%] m-auto duration-200 rounded-md  p-4  ${
-          Math.trunc(progress) !== 100
-            ? "border  text-disabled "
-            : " border  text-selected border-selected   hover:text-white hover:bg-selected"
-        }`}
+    <Layout className="grid place-items-center ">
+      <form
+        className="  flex flex-col  justify-between border gap-4 w-[80%] h-full  p-4 rounded-md "
+        onSubmit={handleSubmit}
       >
-        Submit
-      </button>
-    </form>
+        <header>
+          <h2 className="text-[2rem] m-auto my-0">SACAR TURNO</h2>
+          <ProgressBar progress={progress} />
+        </header>
+
+        <section className="flex h-[90%]  justify-around gap-4">
+          <aside className=" h-full">
+            <ListOfBarbers
+              className={"flex flex-col gap-2 "}
+              barberos={barberos}
+              handleBarber={handleBarber}
+              client={client}
+            />
+          </aside>
+          <aside className="flex h-full   w-[50%] flex-col gap-5">
+            <Calendar
+              value={client.date}
+              handleDate={handleDate}
+              disabled={client.barberId === ""}
+            />
+            <hr className="w-1/3 " />
+            <strong>Horarios disponibles</strong>
+            <ListOfHours
+              client={client}
+              handleTime={handleTime}
+              horarios={horarios}
+            />
+          </aside>
+
+          <aside className="flex flex-col gap-4  w-[35%]">
+            <h3 className="text-[1.1rem]">Tus datos</h3>
+            <hr />
+            <div className="flex flex-col gap-2 ">
+              <Input
+                {...nameInput}
+                title={"Nombre"}
+                type={"text"}
+                className="text-white bg-selected"
+                selcetdColors="text-white bg-selected"
+              />
+              <Input
+                {...mailInput}
+                title="Email"
+                type={"email"}
+                selcetdColors="text-white bg-selected"
+              />
+              <Input
+                {...phoneInput}
+                title="Telefono"
+                type={"number"}
+                selcetdColors="text-white bg-selected"
+              />
+            </div>
+          </aside>
+        </section>
+
+        <button
+          type="submit"
+          disabled={Math.trunc(progress) !== 100}
+          className={` transition-all w-[40%] m-auto duration-200 rounded-md  p-4  ${
+            Math.trunc(progress) !== 100
+              ? "border  text-disabled "
+              : " border  text-selected border-selected   hover:text-white hover:bg-selected"
+          }`}
+        >
+          Submit
+        </button>
+      </form>
+    </Layout>
   );
 }

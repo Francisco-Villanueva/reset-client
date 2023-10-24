@@ -11,9 +11,11 @@ export default function TimeCard({
     <button
       type="button"
       disabled={!time.avaliable || disabled}
-      className={`border p-4 rounded-md  ${disabled && "text-disabled "} ${
-        !time.avaliable && "text-disabled"
-      }  ${className} ${selected && "text-white bg-selected"}`}
+      className={`border  py-[8px] px-[10px] rounded-md  ${
+        disabled && "text-disabled "
+      } ${!time.avaliable && "text-disabled"}  ${className} ${
+        selected && "text-white bg-selected"
+      }`}
       onClick={() => handleTime(time.hs)}
     >
       {time.hs}

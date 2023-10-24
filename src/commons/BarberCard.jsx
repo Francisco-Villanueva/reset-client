@@ -9,12 +9,12 @@ export default function BarberCard({
 }) {
   return (
     <article
-      className={`flex flex-col m-2 items-center gap-2 border rounded-md transition-all duration-200 cursor-pointer  ${
+      className={`flex flex-col  items-center gap-2 border rounded-md transition-all duration-200 cursor-pointer  ${
         selected && "text-white bg-selected"
       }  ${className}`}
       onClick={() => handleBarber(barber.id)}
     >
-      <UserIcon className={`w-[6rem] `} />
+      <UserIcon className={`w-[3rem] `} />
       <p className="text-xl">{barber.name.toUpperCase()}</p>
     </article>
   );

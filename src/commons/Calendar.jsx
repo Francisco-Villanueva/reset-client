@@ -8,16 +8,18 @@ export default function Calendar({ handleDate, value, disabled }) {
   const [localDate, setValue] = React.useState(dayjs(value));
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DateCalendar
-        value={localDate}
-        onChange={(newValue) => {
-          handleDate(newValue.$d);
-          setValue(newValue);
-        }}
-        disabled={disabled}
-        minDate={dayjs(new Date())}
-      />
-    </LocalizationProvider>
+    <div className=" ">
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <DateCalendar
+          value={localDate}
+          onChange={(newValue) => {
+            handleDate(newValue.$d);
+            setValue(newValue);
+          }}
+          disabled={disabled}
+          minDate={dayjs(new Date())}
+        />
+      </LocalizationProvider>
+    </div>
   );
 }
