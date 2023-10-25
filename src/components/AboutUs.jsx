@@ -13,7 +13,7 @@ export default function AboutUs() {
         />
         <div className="flex flex-col gap-4 w-1/2">
           <h2 className="text-[3rem]">QUIENES SOMOS</h2>
-          <span className="  text-xl ">
+          <span className="  text-x  ">
             Reset Hair Studio nace como un nuevo paradigma de la peluqueria
             moderna. Surge por que entendimos que el cabello no tiene genero, y
             que la peluqueria necesitaba un refresh. que los cortes de presicion

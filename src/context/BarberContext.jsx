@@ -36,8 +36,6 @@ export function BarberProvider({ children }) {
 
       await getHorarios(barberId, date);
 
-      message.success(`Turno agendado! ${data.date} a las ${data.time} hs `, 5);
-
       return true;
     } catch (error) {
       message.error(`Hubo un error en la carga del turno!`, 5);

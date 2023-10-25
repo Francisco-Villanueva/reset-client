@@ -5,9 +5,9 @@ import LanandingPage from "./LanandingPage";
 
 export default function Home() {
   return (
-    <Layout className="h-[100vh] flex flex-col  ">
-      <Navbar className="h-[10%] " />
-      <LanandingPage className="flex-1  " />
+    <Layout className="h-[100vh] flex flex-col relative items-center  ">
+      <Navbar className="h-[10vh] fixed p-2 rounded-sm shadow-2xl border-b z-10" />
+      <LanandingPage className="flex-2  " />
     </Layout>
   );
 }

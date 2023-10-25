@@ -10,10 +10,12 @@ import Input from "../commons/Input";
 import useInput from "../hooks/useInput";
 import { isAnyPropertyEmpty } from "../utils/isObjectEmpty";
 import ProgressBar from "../commons/ProgressBar";
-import { IconX } from "../commons/Icons";
+import { ArrowLeft, IconX, CheckIcon } from "../commons/Icons";
 import ListOfBarbers from "./ListOfBarbers";
 import ListOfHours from "./ListOfHours";
 import Layout from "../commons/Layout";
+import FormLayout from "../commons/FormLayout";
+import resetLogo from "../images/RESET_L _dark.png";
 
 export default function Form({}) {
   const { setTurno, getHorarios, horarios, barberos } =
@@ -27,6 +29,14 @@ export default function Form({}) {
     date: currentDay,
     time: "",
     barberId: "",
+  });
+  const [step, setStep] = useState({
+    step: 0,
+    data: {
+      date: currentDay,
+      time: "",
+      barberId: "",
+    },
   });
 
   useEffect(() => {
@@ -66,6 +76,7 @@ export default function Form({}) {
       phone: phoneInput.value,
     };
     setTurno(data);
+    setStep({ step: 3, data });
 
     nameInput.clarInput();
     mailInput.clarInput();
@@ -77,7 +88,6 @@ export default function Form({}) {
       barberId: "",
     });
   };
-
   const handleDate = (date) => {
     setClient((state) => ({ ...state, date: formatoFecha(date) }));
   };
@@ -86,84 +96,144 @@ export default function Form({}) {
   };
   const handleBarber = (barberId) => {
     setClient((state) => ({ ...state, time: "" }));
-
     setClient((state) => ({ ...state, barberId }));
   };
 
   return (
-    <Layout className="grid place-items-center ">
-      <form
-        className="  flex flex-col  justify-between border gap-4 w-[80%] h-full  p-4 rounded-md "
-        onSubmit={handleSubmit}
-      >
-        <header>
-          <h2 className="text-[2rem] m-auto my-0">SACAR TURNO</h2>
-          <ProgressBar progress={progress} />
-        </header>
-
-        <section className="flex h-[90%]  justify-around gap-4">
-          <aside className=" h-full">
-            <ListOfBarbers
-              className={"flex flex-col gap-2 "}
-              barberos={barberos}
-              handleBarber={handleBarber}
-              client={client}
-            />
-          </aside>
-          <aside className="flex h-full   w-[50%] flex-col gap-5">
-            <Calendar
-              value={client.date}
-              handleDate={handleDate}
-              disabled={client.barberId === ""}
-            />
-            <hr className="w-1/3 " />
-            <strong>Horarios disponibles</strong>
-            <ListOfHours
-              client={client}
-              handleTime={handleTime}
-              horarios={horarios}
-            />
-          </aside>
-
-          <aside className="flex flex-col gap-4  w-[35%]">
-            <h3 className="text-[1.1rem]">Tus datos</h3>
-            <hr />
-            <div className="flex flex-col gap-2 ">
-              <Input
-                {...nameInput}
-                title={"Nombre"}
-                type={"text"}
-                className="text-white bg-selected"
-                selcetdColors="text-white bg-selected"
-              />
-              <Input
-                {...mailInput}
-                title="Email"
-                type={"email"}
-                selcetdColors="text-white bg-selected"
-              />
-              <Input
-                {...phoneInput}
-                title="Telefono"
-                type={"number"}
-                selcetdColors="text-white bg-selected"
-              />
-            </div>
-          </aside>
-        </section>
-
-        <button
-          type="submit"
-          disabled={Math.trunc(progress) !== 100}
-          className={` transition-all w-[40%] m-auto duration-200 rounded-md  p-4  ${
-            Math.trunc(progress) !== 100
-              ? "border  text-disabled "
-              : " border  text-selected border-selected   hover:text-white hover:bg-selected"
-          }`}
+    <Layout className="flex justify-center items-center bg-[rgba(255,255,255,.7)] pt-[5rem]  ">
+      {step.step !== 3 && (
+        <form
+          className="  border flex flex-col justify-between  h-[90%] bg-white shadow-lg  w-[30rem]  p-4 rounded-md "
+          onSubmit={handleSubmit}
         >
-          Submit
-        </button>
-      </form>
+          <header className="    ">
+            <h2 className="text-[2rem] m-auto my-0">SACAR TURNO</h2>
+            <ProgressBar progress={progress} />
+          </header>
+
+          <section className=" border  h-[80%] ">
+            {step.step === 0 && (
+              <FormLayout
+                className=" grid place-items-center h-full "
+                title={"Peluquero"}
+              >
+                <ListOfBarbers
+                  className={"flex flex-col gap-2 w-[50%] m-auto   "}
+                  barberos={barberos}
+                  handleBarber={handleBarber}
+                  client={client}
+                />
+              </FormLayout>
+            )}
+            {step.step === 1 && (
+              <FormLayout title={"Fecha y Horario"} className="   h-full ">
+                <Calendar
+                  value={client.date}
+                  handleDate={handleDate}
+                  disabled={client.barberId === ""}
+                />
+
+                <ListOfHours
+                  client={client}
+                  handleTime={handleTime}
+                  horarios={horarios}
+                />
+              </FormLayout>
+            )}
+
+            {step.step === 2 && (
+              <FormLayout
+                className="p-5 h-full flex flex-col justify-center  "
+                title={"Tus datos"}
+              >
+                <div className="flex flex-col gap-2 ">
+                  <Input
+                    {...nameInput}
+                    title={"Nombre"}
+                    type={"text"}
+                    className="text-white bg-selected"
+                    selcetdColors="text-white bg-selected"
+                  />
+                  <Input
+                    {...mailInput}
+                    title="Email"
+                    type={"email"}
+                    selcetdColors="text-white bg-selected"
+                  />
+                  <Input
+                    {...phoneInput}
+                    title="Telefono"
+                    type={"number"}
+                    selcetdColors="text-white bg-selected"
+                  />
+                </div>
+              </FormLayout>
+            )}
+          </section>
+
+          <footer className="  flex items-center justify-between ">
+            <button
+              disabled={step.step === 0}
+              type="button"
+              className={`bg-selected text-white text-center  rounded-md ${
+                step.step === 0 && "text-disabled bg-disabled"
+              } `}
+              onClick={() => setStep((s) => ({ ...s, step: s.step - 1 }))}
+            >
+              <ArrowLeft />
+            </button>
+            <button
+              type="submit"
+              disabled={Math.trunc(progress) !== 100}
+              className={` transition-all w-[40%] m-auto duration-200 rounded-md  p-2 ${
+                Math.trunc(progress) !== 100
+                  ? "border  text-disabled "
+                  : " border  text-selected border-selected   hover:text-white hover:bg-selected"
+              }`}
+            >
+              Submit
+            </button>
+            <button
+              disabled={step.step === 2}
+              type="button"
+              className={`bg-selected text-white text-center rounded-md ${
+                step.step === 2 && "text-disabled bg-disabled"
+              } `}
+              onClick={() => setStep((s) => ({ ...s, step: s.step + 1 }))}
+            >
+              <ArrowLeft className={"rotate-180"} />
+            </button>
+          </footer>
+        </form>
+      )}
+      {step.step === 3 && (
+        <section className="  flex flex-col justify-between  h-[90%] bg-white  w-1/3  p-4 rounded-md">
+          <FormLayout className=" h-full flex flex-col justify-center   ">
+            <div className="flex flex-col text-selected gap-2 items-center  border m-auto p-4 rounded-md bg-white h-[50%] w-full ">
+              <section className="w-1/2 m-auto  absolute top-2">
+                <img src={resetLogo} alt="logo reste" />
+              </section>
+              <header className="text-3xl  flex items-center gap-4 font-semibold  p-2  border-selected border-b-2 w-full">
+                <CheckIcon className="text-selected w-[3rem]" />
+                <h2>Turno confirmado</h2>
+              </header>
+
+              <section className="flex flex-col gap-2 w-2/3 m-auto text-xl text-black ">
+                <span className="flex gap-2 w-full justify-between">
+                  Dia <strong>{step.data.date}</strong>
+                </span>
+                <span className="flex gap-2 w-full justify-between">
+                  Hora<strong>{step.data.time}</strong>
+                </span>
+                <span className="flex gap-2 w-full justify-between">
+                  {" "}
+                  Peluquero<strong>{step.data.barberId}</strong>
+                </span>
+              </section>
+            </div>
+          </FormLayout>
+        </section>
+      )}
     </Layout>
   );
 }

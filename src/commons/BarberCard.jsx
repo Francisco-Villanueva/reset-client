@@ -9,7 +9,7 @@ export default function BarberCard({
 }) {
   return (
     <article
-      className={`flex flex-col  items-center gap-2 border rounded-md transition-all duration-200 cursor-pointer  ${
+      className={`flex   items-center gap-2 border rounded-md transition-all duration-200 cursor-pointer  ${
         selected && "text-white bg-selected"
       }  ${className}`}
       onClick={() => handleBarber(barber.id)}

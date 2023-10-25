@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import logoLight from "../images/RESET_L_light.png";
-import logoDark from "../images/RESET_L _dark.png";
+import logoLight from "../images/RESET_C.png";
+import logoDark from "../images/RESET_C_negro.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { ThemeContext } from "../context/ThemeContext";
@@ -23,43 +23,31 @@ export default function Navbar({ className = "" }) {
   }, []);
   return (
     <nav
-      className={`${className} flex  items-center w-[90%] m-auto  ${theme} ${
-        scrolling ? "scrolling" : ""
+      className={`${className} flex   justify-between  items-center w-full px-[3rem] ${theme} ${
+        scrolling ? "bg-white" : ""
       }`}
     >
-      <div className="flex flex-1 flex-col h-full    gap-2  items-center font-montserrat ">
+      <div className="flex  h-full    gap-2  items-center font-montserrat ">
         <div className=" h-full flex items-center gap-2 ">
           <img
-            src={
-              !(theme === "dark")
-                ? !scrolling
-                  ? logoDark
-                  : logoLight
-                : !scrolling
-                ? logoLight
-                : logoDark
-            }
+            src={theme === "dark" ? logoLight : logoDark}
             alt="logoNav"
-            className="h-[90%] "
+            className="h-full "
           />
         </div>
-        <div className="flex w-1/3   justify-around text-md">
-          {["Home", "Nosotros", "Servicios", "Encontranos"].map((item, i) => (
-            <p
-              key={i}
-              className="cursor-pointer  transition-all duration-150 hover:scale-[1.2]"
-            >
-              {item}
-            </p>
-          ))}
-        </div>
+      </div>
+      <div className="flex w-[40%] gap-2   justify-around text-md">
+        {["Home", "Nosotros", "Servicios", "Encontranos"].map((item, i) => (
+          <p
+            key={i}
+            className="cursor-pointer  transition-all duration-150  font-semibold text-[1rem]  hover:scale-[1.2]"
+          >
+            {item}
+          </p>
+        ))}
       </div>
 
-      <div
-        className={`   text-2xl flex gap-2 ${
-          scrolling ? "text-white" : "text-black"
-        }`}
-      >
+      <div className={`   text-2xl flex gap-2 "text-black" `}>
         <a href="https://www.instagram.com/resetsalon_/">
           <FontAwesomeIcon icon={faInstagram} className="w-[1rem]" />
         </a>

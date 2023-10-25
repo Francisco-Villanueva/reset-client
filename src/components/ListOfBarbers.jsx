@@ -13,7 +13,6 @@ export default function ListOfBarbers({
         .sort((a, b) => a.id - b.id)
         .map((barber) => (
           <BarberCard
-            className=" px-6 "
             barber={barber}
             handleBarber={handleBarber}
             selected={client.barberId === barber.id}
