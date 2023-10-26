@@ -163,7 +163,7 @@ export default function Form({}) {
                   <Input
                     {...phoneInput}
                     title="Telefono"
-                    type={"number"}
+                    type={"text"}
                     selcetdColors="text-white bg-selected"
                   />
                 </div>
@@ -175,8 +175,10 @@ export default function Form({}) {
             <button
               disabled={step.step === 0}
               type="button"
-              className={`bg-selected text-white text-center  rounded-md ${
-                step.step === 0 && "text-disabled bg-disabled"
+              className={` text-center  rounded-md ${
+                step.step === 0
+                  ? "text-disabled bg-disabled"
+                  : " bg-selected text-white"
               } `}
               onClick={() => setStep((s) => ({ ...s, step: s.step - 1 }))}
             >
@@ -196,8 +198,10 @@ export default function Form({}) {
             <button
               disabled={step.step === 2}
               type="button"
-              className={`bg-selected text-white text-center rounded-md ${
-                step.step === 2 && "text-disabled bg-disabled"
+              className={` text-center rounded-md ${
+                step.step === 2
+                  ? "text-disabled bg-disabled"
+                  : "bg-selected text-white"
               } `}
               onClick={() => setStep((s) => ({ ...s, step: s.step + 1 }))}
             >

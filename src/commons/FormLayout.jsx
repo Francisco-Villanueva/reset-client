@@ -4,7 +4,7 @@ export default function FormLayout({ className = "", children, title = "" }) {
   return (
     <section
       className={`h-full max-h-full  overflow-y-auto p-4 w-full relative ${
-        title !== "" && "pt-[4rem]"
+        title !== "" && " pt-[5rem] "
       }${className}`}
     >
       {title !== "" && (
