@@ -36,7 +36,7 @@ export default function Navbar({ className = "" }) {
           />
         </div>
       </div>
-      <div className="flex w-[40%] gap-2   justify-around text-md">
+      {/* <div className="flex w-[40%] gap-2   justify-around text-md ">
         {["Home", "Nosotros", "Servicios", "Encontranos"].map((item, i) => (
           <p
             key={i}
@@ -45,7 +45,7 @@ export default function Navbar({ className = "" }) {
             {item}
           </p>
         ))}
-      </div>
+      </div> */}
 
       <div className={`   text-2xl flex gap-2 "text-black" `}>
         <a href="https://www.instagram.com/resetsalon_/">

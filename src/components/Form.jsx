@@ -100,10 +100,10 @@ export default function Form({}) {
   };
 
   return (
-    <Layout className="flex justify-center items-center bg-[rgba(255,255,255,.7)] pt-[5rem]  ">
+    <Layout className=" h-[100vh]    flex justify-center items-center bg-[rgba(255,255,255,.7)] pt-5  ">
       {step.step !== 3 && (
         <form
-          className="  border flex flex-col justify-between  h-[90%] bg-white shadow-lg  w-[30rem]  p-4 rounded-md "
+          className="  border flex flex-col justify-between   h-[70%] w-[90%] md:w-[40rem] md:h-[90%]    bg-white shadow-lg    p-4 rounded-md "
           onSubmit={handleSubmit}
         >
           <header className="    ">
@@ -111,7 +111,7 @@ export default function Form({}) {
             <ProgressBar progress={progress} />
           </header>
 
-          <section className=" border  h-[80%] ">
+          <section className=" border  h-[90%] ">
             {step.step === 0 && (
               <FormLayout
                 className=" grid place-items-center h-full "

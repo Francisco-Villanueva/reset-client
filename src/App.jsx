@@ -33,7 +33,7 @@ function App() {
           exact
           path="/"
           element={
-            <div className="grid place-content-center">
+            <div className="">
               <Home />
               <AboutUs />
               <Form />
