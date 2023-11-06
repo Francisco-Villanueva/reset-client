@@ -40,7 +40,9 @@ export default function Form({}) {
   });
 
   useEffect(() => {
-    getHorarios(client.barberId, client.date);
+    if (barberos.length) {
+      getHorarios(client.barberId, client.date);
+    }
   }, [client]);
 
   useEffect(() => {

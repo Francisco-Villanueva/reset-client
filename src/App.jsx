@@ -20,7 +20,7 @@ function App() {
     useContext(BarberContext);
 
   useEffect(() => {
-    getHorarios(1, currentDay);
+    // getHorarios(1, currentDay);
     getAllBarbers();
   }, []);
 

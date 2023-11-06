@@ -7,7 +7,7 @@ const initialState = {
   barbers: [],
   horarios: [],
 };
-const API_URL = "http://localhost:4000/api";
+const API_URL = "https://reset-api-h9a7.onrender.com/api";
 export const BarberContext = createContext(initialState);
 
 export function BarberProvider({ children }) {
@@ -30,7 +30,11 @@ export function BarberProvider({ children }) {
 
   const setTurno = async (data) => {
     try {
-      await axios.post(`${API_URL}/appointment`, data);
+      await axios.post(
+        `${API_URL}/appointment`,
+        { withCredentials: true, credentials: "include" },
+        data
+      );
 
       const { barberId, date } = data;
 
