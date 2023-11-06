@@ -30,11 +30,7 @@ export function BarberProvider({ children }) {
 
   const setTurno = async (data) => {
     try {
-      await axios.post(
-        `${API_URL}/appointment`,
-        { withCredentials: true, credentials: "include" },
-        data
-      );
+      await axios.post(`${API_URL}/appointment`, data);
 
       const { barberId, date } = data;
 
@@ -68,9 +64,7 @@ export function BarberProvider({ children }) {
 
   const getOneTurno = async (id, navTo) => {
     try {
-      const turno = await axios.get(
-        `http://localhost:4000/api/appointment/${id}`
-      );
+      const turno = await axios.get(`${API_URL}/appointment/${id}`);
 
       const barber = turno.data
         ? await axios.get(`${API_URL}/barbers/${turno.data.barberId}`)
@@ -93,7 +87,7 @@ export function BarberProvider({ children }) {
 
   const deleteTurno = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/appointment/${id}`);
+      await axios.delete(`${API_URL}/appointment/${id}`);
 
       message.info("Turno cancelado!", 1);
     } catch (error) {
