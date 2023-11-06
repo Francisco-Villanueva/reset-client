@@ -29,17 +29,21 @@ export default function DeleteTurno() {
   return (
     <div className="grid place-items-center  h-[100vh] w-full">
       {turnoData.id ? (
-        <div className="flex flex-col gap-4 w-[50%] h-[50%] border rounded-md p-4 justify-around relative">
+        <div className="flex flex-col gap-4 max-md:w-[95%] w-[50%] h-[50%] max-md:h-[40%] border rounded-md p-4 justify-around relative">
           <div className="flex items-center gap-4">
-            <img src={logoCircular} alt="logoCircular" className="w-[10%] " />
-            <h2 className="text-3xl">
+            <img
+              src={logoCircular}
+              alt="logoCircular"
+              className="w-[10%] max-md:w-[20%] "
+            />
+            <h2 className="text-3xl max-md:text-2xl">
               Cancelacion de turno | RESET - Hair Studio
             </h2>
           </div>
 
           <hr />
 
-          <div className="text-xl">
+          <div className="text-xl max-md:text-lg">
             <p>
               Nombre: <b> {turnoData.name}</b>
             </p>
@@ -55,7 +59,7 @@ export default function DeleteTurno() {
           </div>
           <button
             onClick={handleDelete}
-            className="border bg-selected w-full p-4 rounded-md text-white"
+            className="border bg-selected w-full p-4 max-md:p-2 rounded-md text-white"
           >
             Canelar turno
           </button>
