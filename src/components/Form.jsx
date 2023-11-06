@@ -218,7 +218,7 @@ export default function Form({}) {
         </form>
       )}
       {step.step === 3 && (
-        <section className="  flex flex-col justify-between  h-[90%] bg-white  w-1/3  p-4 rounded-md">
+        <section className="  flex flex-col justify-between  h-[90%]  max-md:w-full w-1/3  p-4 rounded-md">
           <FormLayout className=" h-full flex flex-col justify-center   ">
             <div className="flex flex-col text-selected gap-2 items-center  border m-auto p-4 rounded-md bg-white h-[50%] w-full ">
               <section className="w-1/2 m-auto  absolute top-2">
