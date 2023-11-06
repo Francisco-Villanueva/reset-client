@@ -3,14 +3,14 @@ import TimeCard from "../commons/TimeCard";
 
 export default function ListOfHours({ horarios = [], client, handleTime }) {
   return (
-    <div className=" grid grid-cols-4 gap-2 ">
+    <div className=" grid grid-cols-4 gap-2  ">
       {horarios.map((time) => (
         <TimeCard
           disabled={client.barberId === ""}
           time={time}
           selected={client.time === time.hs}
           handleTime={handleTime}
-          className="p-2"
+          className="p-2 "
         />
       ))}
     </div>

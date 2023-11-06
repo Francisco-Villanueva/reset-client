@@ -105,7 +105,7 @@ export default function Form({}) {
     <Layout className=" h-[100vh]    flex justify-center items-center bg-[rgba(255,255,255,.7)] pt-5  ">
       {step.step !== 3 && (
         <form
-          className="  border flex flex-col justify-between   h-[70%] w-[90%] md:w-[40rem] md:h-[90%]    bg-white shadow-lg    p-4 rounded-md "
+          className="  border flex flex-col justify-between   h-[80%] w-[90%] md:w-[40rem] md:h-[90%]    bg-white shadow-lg    p-4 rounded-md "
           onSubmit={handleSubmit}
         >
           <header className="    ">
@@ -113,14 +113,14 @@ export default function Form({}) {
             <ProgressBar progress={progress} />
           </header>
 
-          <section className=" border  h-[90%] ">
+          <section className="   h-[85%]  ">
             {step.step === 0 && (
               <FormLayout
-                className=" grid place-items-center h-full "
+                className=" grid place-items-center h-[90%] "
                 title={"Peluquero"}
               >
                 <ListOfBarbers
-                  className={"flex flex-col gap-2 w-[50%] m-auto   "}
+                  className={"flex flex-col gap-2 w-[60%] m-auto   "}
                   barberos={barberos}
                   handleBarber={handleBarber}
                   client={client}
@@ -128,7 +128,10 @@ export default function Form({}) {
               </FormLayout>
             )}
             {step.step === 1 && (
-              <FormLayout title={"Fecha y Horario"} className="   h-full ">
+              <FormLayout
+                title={"Fecha y Horario"}
+                className=" felx flex-col   "
+              >
                 <Calendar
                   value={client.date}
                   handleDate={handleDate}
@@ -173,7 +176,7 @@ export default function Form({}) {
             )}
           </section>
 
-          <footer className="  flex items-center justify-between ">
+          <footer className="  flex items-center justify-between  ">
             <button
               disabled={step.step === 0}
               type="button"
@@ -186,17 +189,19 @@ export default function Form({}) {
             >
               <ArrowLeft />
             </button>
-            <button
-              type="submit"
-              disabled={Math.trunc(progress) !== 100}
-              className={` transition-all w-[40%] m-auto duration-200 rounded-md  p-2 ${
-                Math.trunc(progress) !== 100
-                  ? "border  text-disabled "
-                  : " border  text-selected border-selected   hover:text-white hover:bg-selected"
-              }`}
-            >
-              Submit
-            </button>
+            {step.step === 2 && (
+              <button
+                type="submit"
+                disabled={Math.trunc(progress) !== 100}
+                className={` transition-all w-[40%] m-auto duration-200 rounded-md  p-0 ${
+                  Math.trunc(progress) !== 100
+                    ? "border  text-disabled "
+                    : " border  text-selected border-selected   hover:text-white hover:bg-selected"
+                }`}
+              >
+                Submit
+              </button>
+            )}
             <button
               disabled={step.step === 2}
               type="button"
