@@ -1,8 +1,6 @@
-import { Alert } from "@mui/material";
 import axios from "axios";
 import { createContext, useState } from "react";
 import { message } from "antd";
-import Swal from "sweetalert2";
 const initialState = {
   barbers: [],
   horarios: [],
@@ -39,7 +37,6 @@ export function BarberProvider({ children }) {
       return true;
     } catch (error) {
       message.error(`Hubo un error en la carga del turno!`, 5);
-      console.log(error);
       return false;
     }
   };
@@ -50,7 +47,6 @@ export function BarberProvider({ children }) {
         `${API_URL}/hours/${barberId}/${date}`
       );
 
-      console.log({ allHorarios });
       setState((state) => ({
         ...state,
         horarios: allHorarios.data,

@@ -4,18 +4,17 @@ import "react-datepicker/dist/react-datepicker.css";
 import { BarberContext } from "../context/BarberContext";
 import useDate from "../hooks/useDate";
 import Calendar from "../commons/Calendar";
-import BarberCard from "../commons/BarberCard";
-import TimeCard from "../commons/TimeCard";
 import Input from "../commons/Input";
 import useInput from "../hooks/useInput";
-import { isAnyPropertyEmpty } from "../utils/isObjectEmpty";
 import ProgressBar from "../commons/ProgressBar";
 import { ArrowLeft, IconX, CheckIcon } from "../commons/Icons";
 import ListOfBarbers from "./ListOfBarbers";
 import ListOfHours from "./ListOfHours";
+import Loader from "./Loader";
 import Layout from "../commons/Layout";
 import FormLayout from "../commons/FormLayout";
 import resetLogo from "../images/RESET_L _dark.png";
+import { Link } from "react-router-dom";
 
 export default function Form({}) {
   const { setTurno, getHorarios, horarios, barberos } =
@@ -119,12 +118,16 @@ export default function Form({}) {
                 className=" grid place-items-center h-[90%] "
                 title={"Peluquero"}
               >
-                <ListOfBarbers
-                  className={"flex flex-col gap-2 w-[60%] m-auto   "}
-                  barberos={barberos}
-                  handleBarber={handleBarber}
-                  client={client}
-                />
+                {barberos.length ? (
+                  <ListOfBarbers
+                    className={"flex flex-col gap-2 w-[60%] m-auto   "}
+                    barberos={barberos}
+                    handleBarber={handleBarber}
+                    client={client}
+                  />
+                ) : (
+                  <Loader />
+                )}
               </FormLayout>
             )}
             {step.step === 1 && (
@@ -241,6 +244,13 @@ export default function Form({}) {
                   Peluquero<strong>{step.data.barberId}</strong>
                 </span>
               </section>
+
+              <Link
+                to={"/"}
+                className="bg-selected text-white px-3 py-1 rounded-md "
+              >
+                Home
+              </Link>
             </div>
           </FormLayout>
         </section>
