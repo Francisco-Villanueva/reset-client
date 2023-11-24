@@ -5,8 +5,6 @@ export default function Input({
   title,
   placeholder,
   type,
-  defaultValue = "",
-  className = "",
   value,
   onChange,
   onBlur,
