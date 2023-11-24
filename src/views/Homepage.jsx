@@ -4,7 +4,7 @@ import AboutUs from "../components/AboutUs";
 import Form from "../components/Form";
 import Footer from "../components/Footer";
 
-export default function Homepage() {
+export function Homepage() {
   return (
     <div className="">
       <Home />

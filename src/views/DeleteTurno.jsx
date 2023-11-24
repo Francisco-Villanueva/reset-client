@@ -1,19 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { BarberContext } from "../context/BarberContext";
+import { useStore } from "../context/BarberContext";
 import logoCircular from "../images/RESET_C_negro.png";
+import Loader from "../components/Loader";
 
-export default function DeleteTurno() {
-  const [turno, setTurno] = useState({
-    id: "",
-    name: "",
-    email: "",
-    phone: "",
-    time: "",
-    date: "",
-    barberId: "",
-  });
-  const { getOneTurno, turnoData, deleteTurno } = useContext(BarberContext);
+export function DeleteTurno() {
+  const { getOneTurno, turnoData, deleteTurno } = useStore();
   const { id } = useParams();
   const navTo = useNavigate();
   useEffect(() => {
@@ -65,7 +57,7 @@ export default function DeleteTurno() {
           </button>
         </div>
       ) : (
-        <p>Loading...</p>
+        <Loader />
       )}
     </div>
   );
