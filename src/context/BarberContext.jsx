@@ -1,39 +1,68 @@
-import axios from "axios";
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { message } from "antd";
+import { ApiServices } from "../services";
+import useDate from "../hooks/useDate";
 const initialState = {
   barbers: [],
   horarios: [],
+  selectedBarber: {},
+  turnoData: {},
 };
-const API_URL = import.meta.env.VITE_API_URL;
+
 export const BarberContext = createContext(initialState);
 
 export function BarberProvider({ children }) {
+  const { currentDay } = useDate();
   const [state, setState] = useState({
     barberos: [],
     horarios: [],
-    singleBarber: [],
-    turnoData: {},
+    selectedBarber: {},
+    turnoData: {
+      date: currentDay,
+      time: "",
+      barberId: "",
+      clientName: "",
+      clientEmail: "",
+      clientPhone: "",
+    },
   });
 
   const getAllBarbers = async () => {
     try {
-      const barbers_res = await axios.get(`${API_URL}/barbers`);
+      const barbers_res = await ApiServices.getAllBarbers();
       setState((state) => ({ ...state, ["barberos"]: barbers_res.data }));
-      return barbers_res.data;
     } catch (error) {
       console.log(error);
     }
   };
 
-  const setTurno = async (data) => {
+  const handleTurnoData = (key, value) => {
+    setState((s) => ({
+      ...s,
+      turnoData: { ...s.turnoData, [key]: value },
+    }));
+  };
+  const setTurno = async () => {
     try {
-      await axios.post(`${API_URL}/appointment`, data);
+      const data = {
+        date: state.turnoData.date,
+        time: state.turnoData.time,
+        barberId: state.turnoData.barberId,
+        name: state.turnoData.clientName,
+        email: state.turnoData.clientEmail,
+        phone: state.turnoData.clientPhone,
+      };
+      await ApiServices.setTurno(data);
+      const barber = await ApiServices.getBarberById(data);
+
+      console.log({ barber });
+      setState((state) => ({
+        ...state,
+        selectedBarber: barber,
+      }));
 
       const { barberId, date } = data;
-
       await getHorarios(barberId, date);
-
       return true;
     } catch (error) {
       message.error(`Hubo un error en la carga del turno!`, 5);
@@ -43,27 +72,23 @@ export function BarberProvider({ children }) {
 
   const getHorarios = async (barberId, date) => {
     try {
-      const allHorarios = await axios.get(
-        `${API_URL}/hours/${barberId}/${date}`
-      );
+      const allHorarios = await ApiServices.getHorarios(barberId, date);
 
       setState((state) => ({
         ...state,
         horarios: allHorarios.data,
       }));
-
-      return allHorarios.data;
     } catch (error) {
       console.log({ error });
     }
   };
 
-  const getOneTurno = async (id, navTo) => {
+  const getOneTurno = async (turnoId, navTo) => {
     try {
-      const turno = await axios.get(`${API_URL}/appointment/${id}`);
+      const turno = await ApiServices.getTurnoById(turnoId);
 
       const barber = turno.data
-        ? await axios.get(`${API_URL}/barbers/${turno.data.barberId}`)
+        ? await ApiServices.getBarberById(turno.data.barberId)
         : null;
 
       setState((s) => ({
@@ -74,35 +99,45 @@ export function BarberProvider({ children }) {
       if (!turno.data) {
         navTo("/");
       }
-
-      return turno.data;
     } catch (error) {
       console.log(error);
     }
   };
 
-  const deleteTurno = async (id) => {
+  const deleteTurno = async (turnoId) => {
     try {
-      await axios.delete(`${API_URL}/appointment/${id}`);
+      await ApiServices.deletTurno(turnoId);
 
-      message.info("Turno cancelado!", 1);
+      message.info("Turno cancelado!");
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const getProgress = () => {
+    const count = Object.values(state.turnoData).filter(
+      (value) => value !== ""
+    ).length;
+
+    return count * (100 / Object.values(state.turnoData).length);
   };
 
   return (
     <BarberContext.Provider
       value={{
         ...state,
+        turnoProgress: getProgress(),
         getAllBarbers,
         setTurno,
         getHorarios,
         getOneTurno,
         deleteTurno,
+        handleTurnoData,
       }}
     >
       {children}
     </BarberContext.Provider>
   );
 }
+
+export const useStore = () => useContext(BarberContext);

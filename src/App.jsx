@@ -1,12 +1,12 @@
 import { useContext, useEffect } from "react";
 import "./styles/App.scss";
-import { BarberContext } from "./context/BarberContext";
+import { useStore } from "./context/BarberContext";
 import { Routes, Route } from "react-router-dom";
 import { ThemeContext } from "./context/ThemeContext";
-import DeleteTurno from "./components/DeleteTurno";
-import Homepage from "./views/Homepage";
+import { DeleteTurno, Homepage } from "./views";
+
 function App() {
-  const { getAllBarbers } = useContext(BarberContext);
+  const { getAllBarbers } = useStore();
 
   useEffect(() => {
     getAllBarbers();

@@ -14,7 +14,7 @@ export default function TimeCard({
       className={` border rounded-md  ${disabled && "text-disabled "} ${
         !time.avaliable && "text-disabled"
       }  ${className} ${selected && "text-white bg-selected"}`}
-      onClick={() => handleTime(time.hs)}
+      onClick={() => handleTime("time", time.hs)}
     >
       {time.hs}
     </button>
