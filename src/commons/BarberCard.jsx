@@ -1,4 +1,3 @@
-import React from "react";
 import { UserIcon } from "./Icons";
 
 export default function BarberCard({
