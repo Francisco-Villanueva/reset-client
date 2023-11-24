@@ -5,7 +5,7 @@ const initialState = {
   barbers: [],
   horarios: [],
 };
-const API_URL = "https://reset-api-h9a7.onrender.com/api";
+const API_URL = import.meta.env.VITE_API_URL;
 export const BarberContext = createContext(initialState);
 
 export function BarberProvider({ children }) {
