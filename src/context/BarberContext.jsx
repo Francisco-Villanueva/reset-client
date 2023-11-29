@@ -74,6 +74,7 @@ export function BarberProvider({ children }) {
     try {
       const allHorarios = await ApiServices.getHorarios(barberId, date);
 
+      console.log({ allHorarios });
       setState((state) => ({
         ...state,
         horarios: allHorarios.data,
