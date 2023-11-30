@@ -21,9 +21,9 @@ export function BarberProvider({ children }) {
       date: currentDay,
       time: "",
       barberId: "",
-      clientName: "",
-      clientEmail: "",
-      clientPhone: "",
+      name: "",
+      email: "",
+      phone: "",
     },
   });
 
@@ -49,9 +49,9 @@ export function BarberProvider({ children }) {
         date: currentDay,
         time: "",
         barberId: "",
-        clientName: "",
-        clientEmail: "",
-        clientPhone: "",
+        name: "",
+        email: "",
+        phone: "",
       },
     }));
   };
@@ -61,16 +61,13 @@ export function BarberProvider({ children }) {
         date: state.turnoData.date,
         time: state.turnoData.time,
         barberId: state.turnoData.barberId,
-        name: state.turnoData.clientName,
-        email: state.turnoData.clientEmail,
-        phone: state.turnoData.clientPhone,
+        name: state.turnoData.name,
+        email: state.turnoData.email,
+        phone: state.turnoData.phone,
       };
 
-      console.log("data del turno: ", { data });
-      await ApiServices.setTurno(data);
-      const barber = await ApiServices.getBarberById(data);
-
-      console.log({ barber });
+      await ApiServices.setTurno(state.turnoData);
+      const barber = await ApiServices.getBarberById(data.barberId);
       setState((state) => ({
         ...state,
         selectedBarber: barber,
