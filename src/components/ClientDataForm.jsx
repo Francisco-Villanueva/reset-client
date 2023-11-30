@@ -8,7 +8,7 @@ export default function ClientDataForm() {
   const nameInput = useInput("", "required");
   const mailInput = useInput("", "required");
   const phoneInput = useInput("", "required");
-  const { horarios, turnoData, handleTurnoData } = useStore();
+  const { handleTurnoData } = useStore();
   useEffect(() => {
     handleTurnoData("clientName", nameInput.value);
     handleTurnoData("clientEmail", mailInput.value);
