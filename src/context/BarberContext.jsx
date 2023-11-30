@@ -42,6 +42,19 @@ export function BarberProvider({ children }) {
       turnoData: { ...s.turnoData, [key]: value },
     }));
   };
+  const clearTurnoData = () => {
+    setState((s) => ({
+      ...s,
+      turnoData: {
+        date: currentDay,
+        time: "",
+        barberId: "",
+        clientName: "",
+        clientEmail: "",
+        clientPhone: "",
+      },
+    }));
+  };
   const setTurno = async () => {
     try {
       const data = {
@@ -52,6 +65,8 @@ export function BarberProvider({ children }) {
         email: state.turnoData.clientEmail,
         phone: state.turnoData.clientPhone,
       };
+
+      console.log("data del turno: ", { data });
       await ApiServices.setTurno(data);
       const barber = await ApiServices.getBarberById(data);
 
@@ -74,7 +89,6 @@ export function BarberProvider({ children }) {
     try {
       const allHorarios = await ApiServices.getHorarios(barberId, date);
 
-      console.log({ allHorarios });
       setState((state) => ({
         ...state,
         horarios: allHorarios.data,
@@ -134,6 +148,7 @@ export function BarberProvider({ children }) {
         getOneTurno,
         deleteTurno,
         handleTurnoData,
+        clearTurnoData,
       }}
     >
       {children}

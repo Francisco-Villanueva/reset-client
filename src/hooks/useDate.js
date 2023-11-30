@@ -8,10 +8,10 @@ export default function useDate() {
   const currentDay = `${año}-${mes}-${día}`;
   // console.log(fechaEnFormatoDeseado); // Esto mostrará la fecha en el formato deseado, por ejemplo, "2023-08-21"
 
-  function formatoFecha(fechaStr) {
+  function formatToYMD(fechaStr) {
     try {
       let fecha = fechaStr;
-      const diasSemana = [
+      const dias = [
         "Domingo",
         "Lunes",
         "Martes",
@@ -38,11 +38,12 @@ export default function useDate() {
         fecha = new Date(fechaStr);
       }
 
-      const mes = fecha.getMonth() + 1;
+      const mes = fecha.getMonth();
+      const dia = fechaStr.getDay();
       const numero = fechaStr.getDate();
       const year = fecha.getFullYear();
 
-      const res = `${year}-${mes}-${numero}`;
+      const res = `${dias[dia]} ${numero} de ${meses[mes]} | ${year}`;
 
       return res;
     } catch (error) {
@@ -51,5 +52,5 @@ export default function useDate() {
     }
   }
 
-  return { currentDay, formatoFecha };
+  return { currentDay, formatToYMD };
 }
