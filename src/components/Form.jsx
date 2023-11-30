@@ -60,7 +60,7 @@ export default function Form({}) {
           />
         </form>
       )}
-      {step === 3 && <ConfirmationAlert />}
+      {step === 3 && <ConfirmationAlert setStep={setStep} />}
     </Layout>
   );
 }
