@@ -6,7 +6,6 @@ export default function useDate() {
   const día = String(dia.getDate()).padStart(2, "0"); // Obtiene el día (ejemplo: 21)
 
   const currentDay = `${año}-${mes}-${día}`;
-  // console.log(fechaEnFormatoDeseado); // Esto mostrará la fecha en el formato deseado, por ejemplo, "2023-08-21"
 
   function formatToYMD(fechaStr) {
     try {

@@ -6,7 +6,14 @@ const initialState = {
   barbers: [],
   horarios: [],
   selectedBarber: {},
-  turnoData: {},
+  turnoData: {
+    date: "",
+    time: "",
+    barberId: "",
+    name: "",
+    email: "",
+    phone: "",
+  },
 };
 
 export const BarberContext = createContext(initialState);
@@ -18,7 +25,7 @@ export function BarberProvider({ children }) {
     horarios: [],
     selectedBarber: {},
     turnoData: {
-      date: currentDay,
+      date: new Date(),
       time: "",
       barberId: "",
       name: "",
