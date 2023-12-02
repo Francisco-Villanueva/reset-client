@@ -5,14 +5,17 @@ import useInput from "../hooks/useInput";
 import { useStore } from "../context/BarberContext";
 
 export default function ClientDataForm() {
-  const nameInput = useInput("", "required");
-  const mailInput = useInput("", "required");
-  const phoneInput = useInput("", "required");
+  const {
+    turnoData: { name, email, phone },
+  } = useStore();
+  const nameInput = useInput(name, "required");
+  const mailInput = useInput(email, "email");
+  const phoneInput = useInput(phone, "required");
   const { handleTurnoData } = useStore();
   useEffect(() => {
-    handleTurnoData("clientName", nameInput.value);
-    handleTurnoData("clientEmail", mailInput.value);
-    handleTurnoData("clientPhone", phoneInput.value);
+    handleTurnoData("name", nameInput.value);
+    handleTurnoData("email", mailInput.value);
+    handleTurnoData("phone", phoneInput.value);
   }, [nameInput.value, mailInput.value, phoneInput.value]);
   return (
     <FormLayout

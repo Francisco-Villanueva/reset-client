@@ -9,13 +9,14 @@ import SelecDate from "./SelecDate";
 import ClientDataForm from "./ClientDataForm";
 import ConfirmationAlert from "./ConfirmationAlert";
 import Pagination from "./Pagination";
+import Loader from "./Loader";
 
 export default function Form({}) {
-  const { setTurno, getHorarios, barberos, turnoData, turnoProgress } =
+  const { getHorarios, barberos, turnoData, turnoProgress, setTurno } =
     useStore();
 
   const [step, setStep] = useState(0);
-
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (barberos.length) {
       getHorarios(turnoData.barberId, turnoData.date);
@@ -24,8 +25,10 @@ export default function Form({}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTurno();
-    setStep(3);
+    const isOK = setTurno();
+    if (isOK) {
+      setStep(3);
+    }
   };
 
   const handleStep = (move) => {
@@ -40,7 +43,7 @@ export default function Form({}) {
     <Layout className=" h-[100vh]    flex justify-center items-center bg-[rgba(255,255,255,.7)] pt-5  ">
       {step !== 3 && (
         <form
-          className="  border flex flex-col justify-between   h-[80%] w-[90%] md:w-[40rem] md:h-[90%]    bg-white shadow-lg    p-4 rounded-md "
+          className=" relative border flex flex-col justify-between   h-[80%] w-[90%] md:w-[40rem] md:h-[90%]    bg-white shadow-lg    p-4 rounded-md "
           onSubmit={handleSubmit}
         >
           <header className="    ">
@@ -58,6 +61,19 @@ export default function Form({}) {
             limit={turnoProgress}
             handleStep={handleStep}
           />
+          {loading && (
+            <div
+              className="top-0 left-0 h-full w-full backdrop-blur-[4px] bg-[rgba(255,255,255,.1)] absolute grid place-items-center
+              
+             "
+            >
+              <div>
+                <Loader />
+
+                <strong className="text-dark-grey">Cargando truno ...</strong>
+              </div>
+            </div>
+          )}
         </form>
       )}
       {step === 3 && <ConfirmationAlert setStep={setStep} />}

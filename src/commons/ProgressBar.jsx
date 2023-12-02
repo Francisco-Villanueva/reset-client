@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useStore } from "../context/BarberContext";
 
-export default function ProgressBar({ onComplete, progress, className }) {
+export default function ProgressBar() {
   const { turnoProgress } = useStore();
   return (
     <div className="flex items-center gap-2">
@@ -11,7 +11,6 @@ export default function ProgressBar({ onComplete, progress, className }) {
           style={{ width: `${turnoProgress}%` }}
         ></div>
       </div>
-      {/* <div>{Math.trunc(progress)}%</div> */}
     </div>
   );
 }
