@@ -43,7 +43,7 @@ export default function Form({}) {
     <Layout className=" h-[100vh]    flex justify-center items-center bg-[rgba(255,255,255,.7)] pt-5  ">
       {step !== 3 && (
         <form
-          className=" relative border flex flex-col justify-between   h-[80%] w-[90%] md:w-[40rem] md:h-[90%]    bg-white shadow-lg    p-4 rounded-md "
+          className=" relative border flex flex-col justify-between   h-[80%] w-[90%] md:w-[40rem] md:h-[80%]    bg-white shadow-lg    p-4 rounded-md "
           onSubmit={handleSubmit}
         >
           <header className="    ">
