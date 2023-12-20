@@ -24,7 +24,7 @@ export default function Form({}) {
     setSelectedBarber,
   } = useStore();
 
-  const [step, setStep] = useState(4);
+  const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (barberos.length) {
