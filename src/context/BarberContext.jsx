@@ -6,6 +6,7 @@ const initialState = {
   barbers: [],
   horarios: [],
   selectedBarber: {},
+  setSelectedBarber: () => {},
   turnoData: {
     date: "",
     time: "",
@@ -60,6 +61,12 @@ export function BarberProvider({ children }) {
         email: "",
         phone: "",
       },
+    }));
+  };
+  const setSelectedBarber = (barber) => {
+    setState((state) => ({
+      ...state,
+      selectedBarber: barber,
     }));
   };
   const setTurno = async () => {
@@ -153,6 +160,7 @@ export function BarberProvider({ children }) {
         deleteTurno,
         handleTurnoData,
         clearTurnoData,
+        setSelectedBarber,
       }}
     >
       {children}

@@ -8,8 +8,8 @@ export default function useDate() {
   const currentDay = `${año}-${mes}-${día}`;
 
   function formatToYMD(fechaStr) {
+    let fecha = new Date(fechaStr);
     try {
-      let fecha = fechaStr;
       const dias = [
         "Domingo",
         "Lunes",
@@ -33,13 +33,10 @@ export default function useDate() {
         "Noviembre",
         "Diciembre",
       ];
-      if (!typeof fechaStr === "object") {
-        fecha = new Date(fechaStr);
-      }
 
       const mes = fecha.getMonth();
-      const dia = fechaStr.getDay();
-      const numero = fechaStr.getDate();
+      const dia = fecha.getDay();
+      const numero = fecha.getDate();
       const year = fecha.getFullYear();
 
       const res = `${dias[dia]} ${numero} de ${meses[mes]} | ${year}`;
