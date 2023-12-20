@@ -11,7 +11,6 @@ export default function BarberCard({ barber, className = "", selected }) {
       onClick={() => handleTurnoData("barberId", barber.id)}
     >
       <UserIcon className={`w-[3rem] `} />
-      {/* <p className="text-xl">{barber.name.toUpperCase()}</p> */}
       <p className="text-xl">{barber.name}</p>
     </article>
   );

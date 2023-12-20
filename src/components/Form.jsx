@@ -10,12 +10,21 @@ import ClientDataForm from "./ClientDataForm";
 import ConfirmationAlert from "./ConfirmationAlert";
 import Pagination from "./Pagination";
 import Loader from "./Loader";
+import RejectionAlert from "./RejectionAlert";
+import { ApiServices } from "../services";
+import { message } from "antd";
 
 export default function Form({}) {
-  const { getHorarios, barberos, turnoData, turnoProgress, setTurno } =
-    useStore();
+  const {
+    getHorarios,
+    barberos,
+    turnoData,
+    turnoProgress,
+    setTurno,
+    setSelectedBarber,
+  } = useStore();
 
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(4);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (barberos.length) {
@@ -25,10 +34,19 @@ export default function Form({}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const isOK = setTurno();
-    if (isOK) {
-      setStep(3);
-    }
+
+    ApiServices.setTurno(turnoData)
+      .then(() => {
+        ApiServices.getBarberById(turnoData.barberId).then((res) => {
+          setStep(3);
+
+          setSelectedBarber(res.data);
+        });
+      })
+      .catch(() => {
+        message.error(`Hubo un error en la carga del turno!`, 5);
+        setStep(4);
+      });
   };
 
   const handleStep = (move) => {
@@ -41,7 +59,7 @@ export default function Form({}) {
 
   return (
     <Layout className=" h-[100vh]    flex justify-center items-center bg-[rgba(255,255,255,.7)] pt-5  ">
-      {step !== 3 && (
+      {step !== 3 && step !== 4 && (
         <form
           className=" relative border flex flex-col justify-between   h-[80%] w-[90%] md:w-[40rem] md:h-[80%]    bg-white shadow-lg    p-4 rounded-md "
           onSubmit={handleSubmit}
@@ -77,6 +95,7 @@ export default function Form({}) {
         </form>
       )}
       {step === 3 && <ConfirmationAlert setStep={setStep} />}
+      {step === 4 && <RejectionAlert setStep={setStep} />}
     </Layout>
   );
 }
