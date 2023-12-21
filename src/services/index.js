@@ -4,7 +4,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 const API_KEY = import.meta.env.VITE_API_KEY;
 export class ApiServices {
   static async getAllBarbers() {
-    return await axios.get(`${API_URL}/barbers/?API_KEY=${API_KEY}`);
+    return await axios.get(`${API_URL}/barbers/active/?API_KEY=${API_KEY}`);
   }
   static async setTurno(data) {
     return await axios.post(`${API_URL}/appointment/?API_KEY=${API_KEY}`, data);
