@@ -7,10 +7,8 @@ import { Homepage } from "./views";
 
 function App() {
   const { getAllBarbers } = useStore();
-  const API_URL = import.meta.env.VITE_API_URL;
   useEffect(() => {
     getAllBarbers();
-    console.log(API_URL)
   }, []);
   const { theme } = useContext(ThemeContext);
   return (
