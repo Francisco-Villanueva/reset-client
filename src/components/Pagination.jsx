@@ -14,7 +14,7 @@ export default function Pagination({ step, limit, handleStep }) {
       >
         <ArrowLeft />
       </button>
-      {step === 2 && (
+      {step === 3 && (
         <button
           type="submit"
           disabled={Math.trunc(limit) !== 100}
@@ -28,12 +28,10 @@ export default function Pagination({ step, limit, handleStep }) {
         </button>
       )}
       <button
-        disabled={step === 2}
+        disabled={step === 3}
         type="button"
         className={` text-center rounded-md ${
-          step.step === 2
-            ? "text-disabled bg-disabled"
-            : "bg-selected text-white"
+          step === 3 ? "text-disabled bg-disabled" : "bg-selected text-white"
         } `}
         onClick={() => handleStep("next")}
       >

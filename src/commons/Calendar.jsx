@@ -7,7 +7,7 @@ import { useStore } from "../context/BarberContext";
 
 export default function Calendar({ value, disabled }) {
   const [localDate, setValue] = React.useState(dayjs(value));
-  const { handleTurnoData } = useStore();
+  const { handleTurnoData, setStep } = useStore();
   return (
     <div className="">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -16,6 +16,7 @@ export default function Calendar({ value, disabled }) {
           onChange={(newValue) => {
             handleTurnoData("date", newValue.$d);
             setValue(newValue);
+            setStep(2);
           }}
           disabled={disabled}
           minDate={dayjs(new Date())}

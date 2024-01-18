@@ -8,10 +8,8 @@ export default function SelecDate() {
   const { turnoData } = useStore();
 
   return (
-    <FormLayout title={"Fecha y Horario"} className=" felx flex-col   ">
+    <FormLayout title={"Fecha "} className=" flex flex-col ">
       <Calendar value={turnoData.date} disabled={turnoData.barberId === ""} />
-
-      <ListOfHours />
     </FormLayout>
   );
 }
