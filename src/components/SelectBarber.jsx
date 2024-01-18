@@ -12,13 +12,15 @@ export default function SelectBarber() {
       title={"Peluquero"}
     >
       {barberos ? (
-        barberos.length === 0 ?
-        <span className="bg-error p-4 rounded-md text-white font-semibold ">No hay peluqueros disponibles en este momento</span>
-        :<ListOfBarbers
-          className={"flex flex-col gap-2 w-[60%] m-auto   "}
-          barberos={barberos}
-        />
-      ) :  (
+        barberos.length === 0 ? (
+          <Loader />
+        ) : (
+          <ListOfBarbers
+            className={"flex flex-col gap-2 w-[60%] m-auto   "}
+            barberos={barberos}
+          />
+        )
+      ) : (
         <Loader />
       )}
     </FormLayout>

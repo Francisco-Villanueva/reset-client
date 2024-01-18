@@ -3,7 +3,7 @@ import { message } from "antd";
 import { ApiServices } from "../services";
 import useDate from "../hooks/useDate";
 const initialState = {
-  barbers: [],
+  barberos: [],
   horarios: [],
   selectedBarber: {},
   setSelectedBarber: () => {},
@@ -15,6 +15,7 @@ const initialState = {
     email: "",
     phone: "",
   },
+  step: 0,
 };
 
 export const BarberContext = createContext(initialState);
@@ -33,7 +34,12 @@ export function BarberProvider({ children }) {
       email: "",
       phone: "",
     },
+    step: 0,
   });
+
+  const setStep = (newStep) => {
+    setState((s) => ({ ...s, step: newStep }));
+  };
 
   const getAllBarbers = async () => {
     try {
@@ -99,7 +105,6 @@ export function BarberProvider({ children }) {
   const getHorarios = async (barberId, date) => {
     try {
       const allHorarios = await ApiServices.getHorarios(barberId, date);
-
       setState((state) => ({
         ...state,
         horarios: allHorarios.data,
@@ -161,6 +166,7 @@ export function BarberProvider({ children }) {
         handleTurnoData,
         clearTurnoData,
         setSelectedBarber,
+        setStep,
       }}
     >
       {children}
