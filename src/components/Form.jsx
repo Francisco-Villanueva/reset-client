@@ -26,7 +26,6 @@ export default function Form({}) {
     setSelectedBarber,
   } = useStore();
 
-  // const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (barberos.length) {
@@ -62,7 +61,10 @@ export default function Form({}) {
   };
 
   return (
-    <Layout className=" h-[100vh]    flex justify-center items-center bg-[rgba(255,255,255,.7)] pt-5  ">
+    <Layout
+      className=" h-[100vh]    flex justify-center items-center bg-[rgba(255,255,255,.7)] pt-5  "
+      id={"form"}
+    >
       {step !== 4 && step !== 5 && (
         <form
           className=" relative border flex flex-col justify-between   h-[80%] w-[90%] md:w-[40rem] md:h-[80%]    bg-white shadow-lg    p-4 rounded-md "
