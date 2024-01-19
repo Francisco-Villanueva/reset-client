@@ -15,15 +15,17 @@ export default function TimeCard({
     setStep(3);
   };
   return (
-    <article
+    <button
+      type="button"
+      disabled={!time.avaliable || disabled}
       onClick={handleSelectHour}
-      className={` cursor-pointer flex gap-2 border rounded-md items-center p-4 ${
-        time.avaliable ? " text-selected" : "text-disabled"
-      } ${selected && "text-white bg-selected"} relative`}
+      className={`  flex gap-2 border rounded-md items-center p-4 ${
+        time.avaliable
+          ? " text-selected hover:shadow-lg transition-all duration-300"
+          : "text-disabled"
+      } ${selected && "text-white bg-selected"} relative `}
     >
       <div
-        type="button"
-        disabled={!time.avaliable || disabled}
         className={`    ${disabled && "text-disabled "} ${
           !time.avaliable && "text-disabled"
         }  ${className} `}
@@ -37,6 +39,6 @@ export default function TimeCard({
           <CheckIcon className="w-5" />
         </span>
       )}
-    </article>
+    </button>
   );
 }
