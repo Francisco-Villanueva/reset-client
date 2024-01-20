@@ -12,6 +12,8 @@ export default function Calendar({ value, disabled }) {
     <div className="">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateCalendar
+          shouldDisableDate={(date) => date.$W === 0 || date.$W === 1}
+          dayOfWeekFormatter={(date) => date}
           value={localDate}
           onChange={(newValue) => {
             handleTurnoData("date", newValue.$d);
