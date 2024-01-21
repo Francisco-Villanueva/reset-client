@@ -6,8 +6,8 @@ import useDate from "../hooks/useDate";
 import resetLogo from "../images/RESET_L _dark.png";
 import { ApiServices } from "../services";
 
-export default function RejectionAlert({ setStep }) {
-  const { turnoData, clearTurnoData } = useStore();
+export default function RejectionAlert() {
+  const { turnoData, clearTurnoData, setStep } = useStore();
   const { formatToYMD } = useDate();
   const [barberName, setBarberName] = useState("");
   useEffect(() => {

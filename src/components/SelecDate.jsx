@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import FormLayout from "../commons/FormLayout";
 import Calendar from "../commons/Calendar";
-import ListOfHours from "./ListOfHours";
 import { useStore } from "../context/BarberContext";
-
+import "../styles/Form.scss";
+import "react-datepicker/dist/react-datepicker.css";
 export default function SelecDate() {
   const { turnoData } = useStore();
 

@@ -6,8 +6,8 @@ import { useStore } from "../context/BarberContext";
 import { ApiServices } from "../services";
 import useDate from "../hooks/useDate";
 import TermsAndContions from "./TermsAndContions";
-export default function ConfirmationAlert({ setStep }) {
-  const { turnoData, clearTurnoData } = useStore();
+export default function ConfirmationAlert() {
+  const { turnoData, clearTurnoData, setStep } = useStore();
   const { formatToYMD } = useDate();
   const [barberName, setBarberName] = useState("");
   useEffect(() => {
