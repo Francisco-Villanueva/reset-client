@@ -48,5 +48,16 @@ export default function useDate() {
     }
   }
 
-  return { currentDay, formatToYMD };
+  function getWeeksDay (date){
+   switch (date) {
+    case 'Su': return 'Dom'
+    case 'Mo': return 'Lun'
+    case 'Tu': return 'Mar'
+    case 'We': return 'Mie'
+    case 'Th': return 'Jue'
+    case 'Fr': return 'Vie'
+    case 'Sa': return 'Sab'
+   }
+  }
+  return { currentDay, formatToYMD, getWeeksDay };
 }
