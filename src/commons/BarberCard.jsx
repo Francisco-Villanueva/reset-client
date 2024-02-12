@@ -2,10 +2,11 @@ import { useStore } from "../context/BarberContext";
 import { UserIcon } from "./Icons";
 
 export default function BarberCard({ barber, className = "", selected }) {
-  const { handleTurnoData, setStep } = useStore();
+  const { handleTurnoData, setStep, setSelectedBarber } = useStore();
   const handleSelectBarber = () => {
     setStep(1);
     handleTurnoData("barberId", barber.id);
+    setSelectedBarber(barber);
   };
   return (
     <article

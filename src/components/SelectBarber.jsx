@@ -5,7 +5,7 @@ import { useStore } from "../context/BarberContext";
 import Loader from "./Loader";
 
 export default function SelectBarber() {
-  const { barberos, handleTurnoData } = useStore();
+  const { barberos } = useStore();
   return (
     <FormLayout
       className=" grid place-items-center h-[90%] "

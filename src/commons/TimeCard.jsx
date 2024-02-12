@@ -21,18 +21,20 @@ export default function TimeCard({
       onClick={handleSelectHour}
       className={`  flex gap-2 border rounded-md items-center p-4 ${
         time.avaliable
-          ? " text-selected hover:shadow-lg transition-all duration-300"
+          ? " text-black font-semibold hover:shadow-lg transition-all duration-300"
           : "text-disabled"
       } ${selected && "text-white bg-selected"} relative `}
     >
       <div
-        className={`    ${disabled && "text-disabled "} ${
+        className={`font-bold ${disabled && "text-disabled "} ${
           !time.avaliable && "text-disabled"
         }  ${className} `}
       >
-        {time.hs}
+        {time.hs}hs
       </div>
-      <i className="text-sm">{time.avaliable ? "Disponible" : "Ocupado"}</i>
+      <p className={`text-md ${selected ? "" : "text-dark-grey"} `}>
+        {time.avaliable ? "Disponible" : "Ocupado"}
+      </p>
 
       {selected && (
         <span className="absolute -top-1 -left-1 text-sm bg-white rounded-full text-selected p-0">

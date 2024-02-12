@@ -9,13 +9,15 @@ export default function Home() {
     <Layout className="h-[100vh] flex flex-col relative items-center  ">
       <Navbar className="h-[10vh] fixed p-2 rounded-sm shadow-2xl border-b z-10" />
       <LanandingPage className="flex-2  " />
-      <div className="absolute right-0 bottom-0 m-4">
+      <div className="absolute right-10 bottom-10 ">
         <a
           href="#form"
-          className="bg-selected text-white rounded-full p-4 font-semibold"
+          className="bg-black transition-all duration-150 text-white rounded-xl p-3 font-semibold grid place-items-center"
         >
-          Sacar Turno
-          <ArrowDropDownIcon className="w-6 text-white" />
+          <div>
+            Sacar Turno
+            <ArrowDropDownIcon className="w-6 text-white" />
+          </div>
         </a>
       </div>
     </Layout>

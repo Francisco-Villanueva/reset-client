@@ -7,7 +7,7 @@ export default function Footer() {
         href="https://www.linkedin.com/in/francisco-villanueva-50708a226/"
         className="font-semibold flex gap-4 items-center"
       >
-        <span className="border rounded-full w-[2.2rem] h-[2.2rem]  grid place-items-center transition-all duration-200 hover:w-[3rem]">
+        <span className="border rounded-full w-[2.2rem] h-[2.2rem]  grid place-items-center transition-all duration-200  hover:bg-white hover:text-black">
           FV
         </span>
         <span>Develop by Villanueva, Francisco</span>
