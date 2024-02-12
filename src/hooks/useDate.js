@@ -7,6 +7,15 @@ export default function useDate() {
 
   const currentDay = `${año}-${mes}-${día}`;
 
+  function slashedDate(inputDate){
+    const date = new Date(inputDate);
+
+    const year = date.getFullYear(); // Obtiene el año (ejemplo: 2023)
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // Obtiene el mes (ejemplo: 08)
+    const day = String(date.getDate()).padStart(2, "0"); // Obtiene el día (ejemplo: 21)
+  
+    return `${day}/${month}/${year} `
+  }
   function formatToYMD(fechaStr) {
     let fecha = new Date(fechaStr);
     try {
@@ -59,5 +68,5 @@ export default function useDate() {
     case 'Sa': return 'Sab'
    }
   }
-  return { currentDay, formatToYMD, getWeeksDay };
+  return { currentDay, formatToYMD, getWeeksDay, slashedDate };
 }
