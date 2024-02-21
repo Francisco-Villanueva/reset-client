@@ -7,6 +7,7 @@ const initialState = {
   horarios: [],
   selectedBarber: {},
   setSelectedBarber: () => {},
+  handleTurnoData: (key, value) => {},
   turnoData: {
     date: "",
     time: "",

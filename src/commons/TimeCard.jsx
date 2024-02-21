@@ -22,19 +22,25 @@ export default function TimeCard({
       className={`  flex gap-2 border rounded-md items-center p-4 ${
         time.avaliable
           ? " text-black font-semibold hover:shadow-lg transition-all duration-300"
-          : "text-disabled"
-      } ${selected && "text-white bg-selected"} relative `}
+          : "text-disabled "
+      } ${
+        selected && "text-white bg-selected"
+      } relative max-sm:flex-col max-sm:justify-center max-sm:gap-0 `}
     >
       <div
-        className={`font-bold ${disabled && "text-disabled "} ${
+        className={`font-bold  ${disabled && "text-disabled "} ${
           !time.avaliable && "text-disabled"
         }  ${className} `}
       >
         {time.hs}hs
       </div>
-      <p className={`text-md ${selected ? "" : "text-dark-grey"} `}>
+      {/* <p
+        className={`text-md max-sm:text-sm ${
+          selected ? "" : time.avaliable ? "text-dark-grey" : "  text-disabled"
+        } `}
+      >
         {time.avaliable ? "Disponible" : "Ocupado"}
-      </p>
+      </p> */}
 
       {selected && (
         <span className="absolute -top-1 -left-1 text-sm bg-white rounded-full text-selected p-0">
