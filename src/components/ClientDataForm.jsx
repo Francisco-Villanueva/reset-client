@@ -25,7 +25,7 @@ export default function ClientDataForm() {
       <div className="flex flex-col gap-2 ">
         <Input
           {...nameInput}
-          title={"Nombre"}
+          title={"Nombre y Aplledio"}
           type={"text"}
           className="text-white bg-selected"
           selcetdColors="text-white bg-selected"

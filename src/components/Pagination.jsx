@@ -24,7 +24,7 @@ export default function Pagination({ step, limit, handleStep }) {
               : " border  text-selected border-selected   hover:text-white hover:bg-selected"
           }`}
         >
-          Submit
+          Cargar
         </button>
       )}
       <button
