@@ -9,7 +9,7 @@ export function Homepage() {
     <div className="">
       <Home />
       <Form />
-      {/* <AboutUs /> */}
+      <AboutUs />
       <Footer />
     </div>
   );

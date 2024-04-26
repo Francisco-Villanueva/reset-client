@@ -18,10 +18,7 @@ export default function ClientDataForm() {
     handleTurnoData("phone", phoneInput.value);
   }, [nameInput.value, mailInput.value, phoneInput.value]);
   return (
-    <FormLayout
-      className="p-5 h-full flex flex-col justify-center  "
-      title={"Tus datos"}
-    >
+    <FormLayout className="p-5 h-full flex flex-col justify-center  ">
       <div className="flex flex-col gap-2 ">
         <Input
           {...nameInput}

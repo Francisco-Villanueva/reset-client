@@ -4,26 +4,37 @@ import Layout from "../commons/Layout";
 
 export default function AboutUs() {
   return (
-    <Layout className="bg-black h-[100vh]">
-      <article className="h-full text-white  flex  gap-[2rem]  justify-around items-center  max-md:flex-col max-md:justify-center max-md:gap-[5rem]">
-        <img
-          src={logoCircular}
-          className="object-contain max-sm:w-1/2 w-1/6  "
-          alt="resetlogo"
-        />
-        <div className="flex flex-col gap-4 max-sm:w-[90%] w-1/2">
-          <h2 className="max-sm:text-3xl text-[3rem]">QUIENES SOMOS</h2>
-          <span className="  max-sm:text-lg text-xl  ">
-            Reset Hair Studio nace como un nuevo paradigma de la peluquería
-            moderna. Surge porque entendimos que el cabello no tiene género, y
-            que la peluquería necesitaba un refresh. Que los cortes de presición
-            y los creativos pueden convivir en una misma creación, haciendo que
-            el cliente se lleve el mejor corte personalizado y mejorando su
-            imagen exponencialmente. Venimos a llevar la peluquería y la imágen
-            al siguiente nivel. Tu imágen es nuestro compromiso.
-          </span>
+    <Layout className=" h-[100vh] w-full ">
+      <section className="flex gap-4 h-1/2 w-full justify-center items-center">
+        <div className="flex flex-col items-start gap-2 w-[25%]">
+          <img src="/RESET_C_negro.png" className="h-24 aspect-square" />
+          <h2 className="uppercase font-bold">exelencia:</h2>
+          <p className="font-light w-2/3">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat,
+            at dignissimos! Nam fugiat totam sunt repellendus minus, unde ad
+            omnis!
+          </p>
         </div>
-      </article>
+        <div className="flex flex-col items-start gap-2 w-[25%]">
+          <img src="/RESET_C_negro.png" className="h-24 aspect-square" />
+          <h2 className="uppercase font-bold">exelencia:</h2>
+          <p className="font-light w-2/3">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat,
+            at dignissimos! Nam fugiat totam sunt repellendus minus, unde ad
+            omnis!
+          </p>
+        </div>
+        <div className="flex flex-col items-start gap-2 w-[25%]">
+          <img src="/RESET_C_negro.png" className="h-24 aspect-square" />
+          <h2 className="uppercase font-bold">exelencia:</h2>
+          <p className="font-light w-2/3">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat,
+            at dignissimos! Nam fugiat totam sunt repellendus minus, unde ad
+            omnis!
+          </p>
+        </div>
+      </section>
+      <section className="flex gap-4 h-1/2 w-full justify-center items-center bg-black"></section>
     </Layout>
   );
 }

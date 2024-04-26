@@ -1,5 +1,4 @@
 import { useStore } from "../context/BarberContext";
-import { UserIcon } from "./Icons";
 
 export default function BarberCard({ barber, className = "", selected }) {
   const { handleTurnoData, setStep, setSelectedBarber } = useStore();
@@ -10,13 +9,17 @@ export default function BarberCard({ barber, className = "", selected }) {
   };
   return (
     <article
-      className={`flex   items-center gap-2 text-dark-grey border rounded-md transition-all duration-200 cursor-pointer  ${
-        selected && "text-white bg-selected"
+      className={`flex   items-center gap-4 text-dark-grey border border-black px-2 py-1 transition-all duration-200 cursor-pointer  ${
+        selected && "text-white bg-black"
       }  ${className}`}
       onClick={handleSelectBarber}
     >
-      <UserIcon className={`w-[3rem] `} />
-      <p className="text-xl">{barber.name}</p>
+      <div
+        className={`w-[1rem] aspect-square  ${
+          selected ? "bg-white" : "bg-black"
+        } rounded-full `}
+      ></div>
+      <p className="text-xl uppercase ">{barber.name}</p>
     </article>
   );
 }

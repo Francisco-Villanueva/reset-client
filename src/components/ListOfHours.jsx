@@ -19,7 +19,7 @@ export default function ListOfHours() {
       .finally(() => setLoading(false));
   }, []);
   return (
-    <FormLayout title="Horario">
+    <FormLayout>
       {loading ? (
         <Loader />
       ) : horarios ? (

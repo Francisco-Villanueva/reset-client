@@ -19,12 +19,12 @@ export default function TimeCard({
       type="button"
       disabled={!time.avaliable || disabled}
       onClick={handleSelectHour}
-      className={`  flex gap-2 border rounded-md items-center p-4 ${
+      className={`  flex gap-2 border border-black items-center p-4 ${
         time.avaliable
           ? " text-black font-semibold hover:shadow-lg transition-all duration-300"
           : "text-disabled "
       } ${
-        selected && "text-white bg-selected"
+        selected && "text-white bg-black"
       } relative max-sm:flex-col max-sm:justify-center max-sm:gap-0 `}
     >
       <div
@@ -34,16 +34,9 @@ export default function TimeCard({
       >
         {time.hs}hs
       </div>
-      {/* <p
-        className={`text-md max-sm:text-sm ${
-          selected ? "" : time.avaliable ? "text-dark-grey" : "  text-disabled"
-        } `}
-      >
-        {time.avaliable ? "Disponible" : "Ocupado"}
-      </p> */}
 
       {selected && (
-        <span className="absolute -top-1 -left-1 text-sm bg-white rounded-full text-selected p-0">
+        <span className="absolute -top-1 -left-1 text-sm bg-white rounded-full text-black p-0">
           <CheckIcon className="w-5" />
         </span>
       )}

@@ -44,12 +44,15 @@ export default function FormBody({ children }) {
     <>
       {step !== 4 && step !== 5 ? (
         <form
-          className=" relative border flex flex-col justify-between   h-[80%] w-[90%] md:w-[40rem] md:h-[80%]    bg-white shadow-lg    p-4 rounded-md "
+          className=" relative border flex flex-col justify-between   h-[60%] w-[90%] md:w-[40rem]     bg-white shadow-lg    p-2 "
           onSubmit={handleSubmit}
         >
           <header className="    ">
-            <h2 className="text-[2rem] m-auto my-0">SACAR TURNO</h2>
-            <ProgressBar />
+            <h2 className="text-2xl m-auto my-0 font-light uppercase">
+              Agendá tu turno
+            </h2>
+            <div className="border border-black w-1/2" />
+            {/* <ProgressBar /> */}
           </header>
 
           <section className="   h-[85%]  ">{children}</section>

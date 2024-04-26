@@ -8,7 +8,7 @@ export default function Pagination({ step, limit, handleStep }) {
         disabled={step === 0}
         type="button"
         className={` text-center  rounded-md ${
-          step === 0 ? "text-disabled bg-disabled" : " bg-selected text-white"
+          step === 0 ? "text-disabled bg-disabled" : " bg-black text-white"
         } `}
         onClick={() => handleStep("prev")}
       >
@@ -21,7 +21,7 @@ export default function Pagination({ step, limit, handleStep }) {
           className={` transition-all w-[40%] m-auto duration-200 rounded-md  p-0 ${
             Math.trunc(limit) !== 100
               ? "border  text-disabled "
-              : " border  text-selected border-selected   hover:text-white hover:bg-selected"
+              : " border  text-black border-black   hover:text-white hover:bg-black"
           }`}
         >
           Cargar
@@ -31,7 +31,7 @@ export default function Pagination({ step, limit, handleStep }) {
         disabled={step === 3}
         type="button"
         className={` text-center rounded-md ${
-          step === 3 ? "text-disabled bg-disabled" : "bg-selected text-white"
+          step === 3 ? "text-disabled bg-disabled" : "bg-black text-white"
         } `}
         onClick={() => handleStep("next")}
       >
