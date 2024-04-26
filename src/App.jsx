@@ -12,7 +12,7 @@ function App() {
   }, []);
   const { theme } = useContext(ThemeContext);
   return (
-    <div className={`app ${theme}`}>
+    <div className={`app ${theme}`} style={{ scrollBehavior: "smooth" }}>
       <Homepage />
     </div>
   );

@@ -8,8 +8,8 @@ export function Homepage() {
   return (
     <div className="">
       <Home />
-      <AboutUs />
       <Form />
+      {/* <AboutUs /> */}
       <Footer />
     </div>
   );
