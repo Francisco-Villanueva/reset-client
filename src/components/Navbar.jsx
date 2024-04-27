@@ -39,10 +39,10 @@ export default function Navbar() {
 
       <div className="flex items-center gap-16">
         <div className="flex items-center gap-6">
-          <a href="#" className="uppercase">
+          <a href="#form" className="uppercase">
             Agendá tu turno
           </a>
-          <a href="#" className="uppercase">
+          <a href="#nosotros" className="uppercase">
             Nosotros
           </a>
           <a href="#" className="uppercase">

@@ -1,16 +1,26 @@
-import { ArrowDropDownIcon } from "@mui/x-date-pickers";
+import {
+  ArrowDropDownIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+} from "@mui/x-date-pickers";
+import { Slider } from "./Slider";
 
 export default function LanandingPage() {
+  const handleChangePhoto = () => {
+    alert("hola");
+  };
   return (
     <section className={`  h-full w-full    m-auto `}>
-      <div className="  h-[80%] w-full bg-green relative">
-        <img
-          src={"/landing/landing1.jpg"}
-          alt="joaco"
-          className=" h-full aspect-video w-full  object-cover object-top  z-0   "
+      <div className="  h-[80%] w-full  relative flex justify-center items-center">
+        <Slider
+          images={[
+            "/landing/landing1.jpg",
+            "/landing/landing2.jpg",
+            "/landing/landing3.jpg",
+          ]}
         />
 
-        <section className="flex flex-col gap-8 items-center justify-center h-full w-full   absolute bottom-0  bg-black/80 text-white">
+        <section className="flex flex-col gap-8 items-center justify-center h-full w-full outline  absolute bottom-0  bg-transparent text-white">
           <div className="">
             <img
               src={"/RESET_C.png"}
@@ -21,10 +31,10 @@ export default function LanandingPage() {
           <div className="w-2/3 ">
             <p className="text-center font-semibold uppercase">
               Somos un salón especializado en la imágen masculina. A través de
-              un enfoque único que combina técnias vanguardistas y un profundo
-              dominio teórico. Asesoramos a nuestros clientes para crear estilos
+              un enfoque único que combina técnicas vanguardistas y un profundo
+              dominio teórico, asesoramos a nuestros clientes para crear estilos
               que se adapten a sus necesidades y reflejen su personalidad y
-              estilo de vida
+              estilo de vida.
             </p>
           </div>
         </section>

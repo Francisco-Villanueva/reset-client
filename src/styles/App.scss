@@ -1,13 +1,15 @@
 @import "./colors_ligth.scss";
 @import "./colors_dark.scss";
-/* src/styles/tailwind.css */
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-
+html{
+  scroll-behavior: smooth;
+}
 .app {
   transition: all 0.15s;
   scroll-behavior: smooth;
+  font-family: 'Montserrat';
 }
 .section_page {
   min-height: 100vh;
