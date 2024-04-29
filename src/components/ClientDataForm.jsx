@@ -10,7 +10,7 @@ export default function ClientDataForm() {
   } = useStore();
   const nameInput = useInput(name, "fullName");
   const mailInput = useInput(email, "email");
-  const phoneInput = useInput(phone, "required");
+  const phoneInput = useInput(phone, "phoneNumber");
   const { handleTurnoData } = useStore();
   useEffect(() => {
     handleTurnoData("name", !nameInput.error ? nameInput.value : "");

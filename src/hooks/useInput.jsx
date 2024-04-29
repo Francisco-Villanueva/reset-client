@@ -22,6 +22,15 @@ function validator(type) {
 
     return null;
   };
+  const phoneNumberValidatior = (value) => {
+    const phoneNumberRegex = /^\d{7,15}$/; // Expresión regular para validar un número de teléfono de 7 a 15 dígitos
+
+    if (!phoneNumberRegex.test(value)) {
+      return "Por favor ingresa un número de teléfono válido.";
+    }
+
+    return null;
+  };
 
   const fullNameValidator = (value) => {
     const onlyLettersRegex = /^[a-zA-Z\s]*$/; // Expresión regular para permitir solo letras y espacios
@@ -52,6 +61,9 @@ function validator(type) {
     }
     case "email": {
       return emailValidator;
+    }
+    case "phoneNumber": {
+      return phoneNumberValidatior;
     }
 
     default:
