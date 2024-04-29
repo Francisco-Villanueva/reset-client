@@ -39,13 +39,12 @@ export function FeedbackSlider() {
             key={i}
           >
             <Stars stars={feedback.stars} />
-            <p className="italic font-normal text-xl w-1/2 text-center">
-              {" "}
+            <p className="italic font-normal text-lg w-1/2 text-center">
               " {feedback.feedback} "
             </p>
             <div className="flex flex-col items-center">
               <UserIcon className="w-14 " />
-              <p className="font-semibold text-2xl">{feedback.author}</p>
+              <p className="font-semibold text-xl">{feedback.author}</p>
             </div>
           </div>
         ))}

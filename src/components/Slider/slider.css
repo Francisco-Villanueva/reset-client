@@ -5,11 +5,9 @@
   
   .slide-wrapper {
     display: flex;
-    transition: transform 0.5s ease; /* Agregamos una transición para el cambio suave */
+    transition: transform 0.1s ease; /* Agregamos una transición para el cambio suave */
   }
   
-  .slide {
-    min-width: 100%;
-  }
+
 
   

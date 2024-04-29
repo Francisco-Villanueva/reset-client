@@ -8,37 +8,28 @@ export default function ClientDataForm() {
   const {
     turnoData: { name, email, phone },
   } = useStore();
-  const nameInput = useInput(name, "required");
+  const nameInput = useInput(name, "fullName");
   const mailInput = useInput(email, "email");
   const phoneInput = useInput(phone, "required");
   const { handleTurnoData } = useStore();
   useEffect(() => {
-    handleTurnoData("name", nameInput.value);
-    handleTurnoData("email", mailInput.value);
-    handleTurnoData("phone", phoneInput.value);
-  }, [nameInput.value, mailInput.value, phoneInput.value]);
+    handleTurnoData("name", !nameInput.error ? nameInput.value : "");
+    handleTurnoData("email", !mailInput.error ? mailInput.value : "");
+    handleTurnoData("phone", !phoneInput.error ? phoneInput.value : "");
+  }, [
+    nameInput.value,
+    mailInput.value,
+    phoneInput.value,
+    nameInput.error,
+    mailInput.error,
+    phoneInput.error,
+  ]);
   return (
     <FormLayout className="p-5 h-full flex flex-col justify-center  ">
       <div className="flex flex-col gap-2 ">
-        <Input
-          {...nameInput}
-          title={"Nombre y Aplledio"}
-          type={"text"}
-          className="text-white bg-selected"
-          selcetdColors="text-white bg-selected"
-        />
-        <Input
-          {...mailInput}
-          title="Email"
-          type={"email"}
-          selcetdColors="text-white bg-selected"
-        />
-        <Input
-          {...phoneInput}
-          title="Telefono"
-          type={"text"}
-          selcetdColors="text-white bg-selected"
-        />
+        <Input {...nameInput} title={"Nombre y Apellido"} type={"text"} />
+        <Input {...mailInput} title="Email" type={"email"} />
+        <Input {...phoneInput} title="Teléfono" type={"number"} />
       </div>
     </FormLayout>
   );

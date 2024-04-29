@@ -12,7 +12,7 @@ export default function ProgressBar() {
     <div className="flex flex-col items-center gap-2">
       <div className="w-full h-1 bg-gray-200 rounded-lg">
         <div
-          className="h-full bg-selected rounded-lg transition-all duration-200"
+          className="h-full bg-black rounded-lg transition-all duration-200"
           style={{ width: `${turnoProgress}%` }}
         ></div>
       </div>

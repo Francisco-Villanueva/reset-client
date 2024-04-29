@@ -37,7 +37,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className="flex items-center gap-16">
+      <div className="flex items-center gap-16 text-sm">
         <div className="flex items-center gap-6">
           <a href="#form" className="uppercase">
             Agendá tu turno

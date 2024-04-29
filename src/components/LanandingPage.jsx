@@ -10,7 +10,7 @@ export default function LanandingPage() {
     alert("hola");
   };
   return (
-    <section className={`  h-full w-full    m-auto `}>
+    <section className={`  h-full w-full    m-auto `} id="home">
       <div className="  h-[80%] w-full  relative flex justify-center items-center">
         <Slider
           images={[
@@ -29,7 +29,7 @@ export default function LanandingPage() {
             />
           </div>
           <div className="w-2/3 ">
-            <p className="text-center font-semibold uppercase">
+            <p className="text-center font- uppercase">
               Somos un salón especializado en la imágen masculina. A través de
               un enfoque único que combina técnicas vanguardistas y un profundo
               dominio teórico, asesoramos a nuestros clientes para crear estilos

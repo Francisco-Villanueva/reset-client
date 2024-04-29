@@ -18,7 +18,7 @@ export default function Pagination({ step, limit, handleStep }) {
         <button
           type="submit"
           disabled={Math.trunc(limit) !== 100}
-          className={` transition-all w-[40%] m-auto duration-200 rounded-md  p-0 ${
+          className={` transition-all w-[40%] m-auto duration-200 rounded-md p-1 ${
             Math.trunc(limit) !== 100
               ? "border  text-disabled "
               : " border  text-black border-black   hover:text-white hover:bg-black"
@@ -30,7 +30,7 @@ export default function Pagination({ step, limit, handleStep }) {
       <button
         disabled={step === 3}
         type="button"
-        className={` text-center rounded-md ${
+        className={` text-center rounded-md  ${
           step === 3 ? "text-disabled bg-disabled" : "bg-black text-white"
         } `}
         onClick={() => handleStep("next")}

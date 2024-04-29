@@ -19,7 +19,7 @@ export default function Input({
 
   return (
     <div className={`relative  h-[95px]  `}>
-      <label className="block text-dark-grey ml-2 font-sans">{title}</label>
+      <label className="block text-black  font-semibold">{title}</label>
       <input
         value={value}
         onChange={onChange}
@@ -28,10 +28,10 @@ export default function Input({
         type={inputType}
         placeholder={placeholder}
         defaultValue={value}
-        className={`w-full  h-14 py-2 rounded-xl border ${
+        className={`w-full  h-14 py-2 rounded-sm border border-black ${
           value !== "" && selcetdColors
         } ${
-          error ? "border-selected" : ""
+          value.length && error ? "border-2" : ""
         } text-black p-4  font-sans focus:outline-none`}
       />
 
@@ -51,8 +51,8 @@ export default function Input({
         </button>
       )}
 
-      {touched && error ? (
-        <p className=" ml-4  text-selected text-sm  ">{error}</p>
+      {(value.length > 0) & touched && error ? (
+        <p className=" ml-4  text-dark-grey text-sm  ">{error}</p>
       ) : null}
     </div>
   );

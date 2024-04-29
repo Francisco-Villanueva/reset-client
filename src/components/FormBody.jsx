@@ -44,18 +44,18 @@ export default function FormBody({ children }) {
     <>
       {step !== 4 && step !== 5 ? (
         <form
-          className=" relative border flex flex-col justify-between   h-[60%] w-[90%] md:w-[40rem]     bg-white shadow-lg    p-2 "
+          className=" relative border flex flex-col justify-between   h-[75%] w-[90%] md:w-[40rem]     bg-white shadow-lg    p-2 "
           onSubmit={handleSubmit}
         >
-          <header className="    ">
+          <header className="  h-[20%]   ">
             <h2 className="text-2xl m-auto my-0 font-light uppercase">
               Agendá tu turno
             </h2>
             <div className="border border-black w-1/2" />
-            {/* <ProgressBar /> */}
+            <ProgressBar />
           </header>
 
-          <section className="   h-[85%]  ">{children}</section>
+          <section className="   h-[80%]  ">{children}</section>
           <Pagination
             step={step}
             limit={turnoProgress}
@@ -65,7 +65,7 @@ export default function FormBody({ children }) {
             <div className="top-0 left-0 h-full w-full  backdrop-blur-[4px] bg-[rgba(255,255,255,.1)] absolute grid place-items-center ">
               <div>
                 <Loader />
-                <strong className="text-selected">Cargando truno </strong>
+                <strong className="text-black">Cargando truno </strong>
               </div>
             </div>
           )}

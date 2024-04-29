@@ -5,6 +5,7 @@ import FormContent from "./FormContent";
 import AlertContent from "./AlertContent";
 import FormBody from "./FormBody";
 import { useStore } from "../context/BarberContext";
+import { FormSlider } from "./Slider";
 
 export default function Form() {
   const { selectedBarber, barberos } = useStore();
@@ -27,7 +28,7 @@ export default function Form() {
         <img src={barberImage} className="h-full grayscale " />
       </div>
       <FormBody>
-        <FormContent />
+        <FormSlider />
       </FormBody>
       <AlertContent />
 
