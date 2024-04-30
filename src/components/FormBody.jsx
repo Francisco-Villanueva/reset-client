@@ -11,8 +11,8 @@ export default function FormBody({ children }) {
     useStore();
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    if (barberos.length) {
-      getHorarios(turnoData.barberId, turnoData.date);
+    if (barberos.length && turnoData.barberId && turnoData.date) {
+      // getHorarios(turnoData.barberId, turnoData.date);
     }
   }, [turnoData]);
   const handleStep = (move) => {
@@ -44,14 +44,14 @@ export default function FormBody({ children }) {
     <>
       {step !== 4 && step !== 5 ? (
         <form
-          className=" relative border flex flex-col justify-between   h-[75%] w-[90%] md:w-[40rem]     bg-white shadow-lg    p-2 "
+          className=" relative border flex flex-col justify-between   h-[75%] w-[90%] md:w-[40rem]     bg-white shadow-lg    p-4 "
           onSubmit={handleSubmit}
         >
           <header className="  h-[20%]   ">
-            <h2 className="text-2xl m-auto my-0 font-light uppercase">
+            <h2 className="text-2xl  my-0 font-light uppercase">
               Agendá tu turno
             </h2>
-            <div className="border border-black w-1/2" />
+            <div className="border border-black w-1/2 mb-1" />
             <ProgressBar />
           </header>
 
@@ -62,10 +62,12 @@ export default function FormBody({ children }) {
             handleStep={handleStep}
           />
           {loading && (
-            <div className="top-0 left-0 h-full w-full  backdrop-blur-[4px] bg-[rgba(255,255,255,.1)] absolute grid place-items-center ">
-              <div>
+            <div className="top-0 left-0 h-full w-full  backdrop-blur-[4px] bg-[rgba(255,255,255,.8)] absolute grid place-items-center ">
+              <div className="flex flex-col gap-4">
                 <Loader />
-                <strong className="text-black">Cargando truno </strong>
+                <strong className="text-dark-grey uppercase font-normal">
+                  Cargando truno{" "}
+                </strong>
               </div>
             </div>
           )}

@@ -1,14 +1,7 @@
-import {
-  ArrowDropDownIcon,
-  ArrowLeftIcon,
-  ArrowRightIcon,
-} from "@mui/x-date-pickers";
+import { ArrowDropDownIcon } from "@mui/x-date-pickers";
 import { Slider } from "./Slider";
 
 export default function LanandingPage() {
-  const handleChangePhoto = () => {
-    alert("hola");
-  };
   return (
     <section className={`  h-full w-full    m-auto `} id="home">
       <div className="  h-[80%] w-full  relative flex justify-center items-center">

@@ -4,6 +4,7 @@ import logoDark from "../images/RESET_C_negro.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { ThemeContext } from "../context/ThemeContext";
+import Instagram from "../commons/Instagram";
 
 export default function Navbar() {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -49,10 +50,8 @@ export default function Navbar() {
             Contacto
           </a>
         </div>
-        <div className={`   text-2xl flex gap-2 "text-black" `}>
-          <a href="https://www.instagram.com/resetsalon_/">
-            <FontAwesomeIcon icon={faInstagram} className="w-[1rem]" />
-          </a>
+        <div className=" text-xl flex gap-2 ">
+          <Instagram />
         </div>
       </div>
     </nav>

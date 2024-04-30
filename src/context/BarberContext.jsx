@@ -95,7 +95,9 @@ export function BarberProvider({ children }) {
       }));
 
       const { barberId, date } = data;
-      await getHorarios(barberId, date);
+      if (barberId && date) {
+        await getHorarios(barberId, date);
+      }
       return true;
     } catch (error) {
       message.error(`Hubo un error en la carga del turno!`, 5);

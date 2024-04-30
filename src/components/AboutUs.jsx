@@ -5,7 +5,7 @@ import { FeedbackSlider } from "./Slider";
 
 export default function AboutUs() {
   return (
-    <Layout className=" h-[100vh] w-full pt-[10vh]  " id={"nosotros"}>
+    <Layout className=" h-[100vh] w-full pt-[12vh]  " id={"nosotros"}>
       <section className=" h-1/2 w-3/4 m-auto grid grid-cols-3 gap-4   ">
         {aboutus.map((about) => (
           <div className="flex flex-col items-start gap-4   ">
