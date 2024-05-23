@@ -15,11 +15,11 @@ export default function BarberCard({ barber, className = "", selected }) {
       onClick={handleSelectBarber}
     >
       <div
-        className={`w-[1rem] aspect-square  ${
+        className={`w-[1rem]  max-md:w-[.75rem] aspect-square  ${
           selected ? "bg-white" : "bg-black"
         } rounded-full `}
       ></div>
-      <p className="text-xl uppercase ">{barber.name}</p>
+      <p className="text-xl uppercase max-md:text-lg ">{barber.name}</p>
     </article>
   );
 }

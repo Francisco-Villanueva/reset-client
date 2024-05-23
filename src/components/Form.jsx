@@ -1,11 +1,8 @@
-import React from "react";
-
 import Layout from "../commons/Layout";
 import FormContent from "./FormContent";
 import AlertContent from "./AlertContent";
 import FormBody from "./FormBody";
 import { useStore } from "../context/BarberContext";
-import { FormSlider } from "./Slider";
 
 export default function Form() {
   const { selectedBarber, barberos } = useStore();
@@ -21,18 +18,20 @@ export default function Form() {
     >
       <div className="h-full absolute w-full">
         <div className="h-[20%] bg-black"></div>
-        <div className="h-[40%] bg-white"></div>
+        <div className="h-[40%] bg-white "></div>
         <div className="h-[40%]  bg-black"></div>
       </div>
-      <div className=" h-[75%]">
-        <img src={barberImage} className="h-full grayscale " />
+      <div className="h-[75%] w-full flex justify-center  max-md:flex-col  max-md:items-center gap-2 outline  ">
+        <div className=" h-full max-md:h-1/2  max-md:hidden top-10 ">
+          <img src={barberImage} className="h-full grayscale " />
+        </div>
+        <FormBody>
+          <FormContent />
+        </FormBody>
       </div>
-      <FormBody>
-        <FormSlider />
-      </FormBody>
       <AlertContent />
 
-      <div className=" m-auto w-2/3 absolute bottom-0">
+      <div className=" m-auto w-2/3 absolute bottom-0 max-md:w-5/6  max-md:text-sm">
         <p className="text-center text-white font-light uppercase">
           Nuestro compromiso por ofrecer un servicio de alta calidad nos impulsa
           a superar y redefinir los estándares de la industria. Somos reset, el

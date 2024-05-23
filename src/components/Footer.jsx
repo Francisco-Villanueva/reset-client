@@ -5,16 +5,19 @@ import { Map } from "./maps";
 
 export default function Footer() {
   return (
-    <footer className="p-10  bg-black text-white h-[40vh]">
+    <footer
+      className="p-10 max-md:p-4  bg-black text-white h-[40vh] max-md:h-[60vh]"
+      id="footer"
+    >
       <div className=" flex gap-8 h-full">
-        <section className="flex gap-6 items-center h-full">
-          <div className="h-5/6">
+        <section className="flex max-md:flex-col-reverse gap-6 items-center h-full  max-md:w-1/2 max-md:justify-end ">
+          <div className="h-5/6 max-md:h-20">
             <img
               src="/RESET_C.png"
               className="h-full aspect-square object-cover "
             />
           </div>
-          <div className="flex flex-col text-sm items-start justify-center gap-4">
+          <div className="flex flex-col text-sm items-start justify-center  max-md:justify-start  gap-4">
             <a href="#home" className="uppercase">
               Home
             </a>
@@ -29,31 +32,35 @@ export default function Footer() {
             </a>
           </div>
         </section>
-        <div className="h-full border"></div>
-        <section className="flex flex-col gap-6">
-          <div className="uppercase flex flex-col gap-2 items-start text-sm">
-            <h2 className="font-semibold">horarios de atención</h2>
-            <p>Martes a sábados : 10:00 - 20:00</p>
-          </div>
-          <div className="flex gap-2 text-xl">
-            <Instagram />
-            <Whatsapp />
-          </div>
-        </section>
 
-        <section className="flex-grow">
-          <Map />
-        </section>
-        <section className="flex flex-col text-white font-extralight text-xs uppercase justify-center gap-4">
-          <h2 className="font-semibold">Contacto</h2>
-          <section className="flex flex-col ">
-            <h2 className="font-bold">Gorriti 61</h2>
-            <span>Bahía Blanca</span>
-            <span>Buenos Aires</span>
-            <span>Argentina</span>
+        <div className="h-full border max-md:hidden"></div>
+
+        <div className="flex gap-8 h-full  max-md:flex-col flex-grow">
+          <section className="flex flex-col gap-6">
+            <div className="uppercase flex flex-col gap-2 items-start text-sm">
+              <h2 className="font-semibold">horarios de atención</h2>
+              <p>Martes a sábados : 10:00 - 20:00</p>
+            </div>
+            <div className="flex gap-2 text-xl">
+              <Instagram />
+              <Whatsapp />
+            </div>
           </section>
-          <span>+54 291 5779-365</span>
-        </section>
+
+          <section className="flex-grow">
+            <Map />
+          </section>
+          <section className="flex flex-col  text-white font-extralight text-xs uppercase justify-start gap-4">
+            <h2 className="font-semibold">Contacto</h2>
+            <section className="flex flex-col ">
+              <h2 className="font-bold">Gorriti 61</h2>
+              <span>Bahía Blanca</span>
+              <span>Buenos Aires</span>
+              <span>Argentina</span>
+            </section>
+            <span>+54 291 5779-365</span>
+          </section>
+        </div>
       </div>
 
       {/* <a

@@ -17,7 +17,7 @@ export default function Calendar({ value, disabled }) {
   };
 
   return (
-    <div className=" h-full w-full  overflow-hidden">
+    <div className=" h-full  w-full   overflow-hidden ">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateCalendar
           shouldDisableDate={handleDisableDates}
@@ -30,9 +30,7 @@ export default function Calendar({ value, disabled }) {
           }}
           disabled={disabled}
           minDate={dayjs(new Date())}
-          sx={{
-            width: "100%",
-          }}
+          className="w-full "
         />
       </LocalizationProvider>
     </div>

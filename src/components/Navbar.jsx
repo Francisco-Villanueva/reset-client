@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { ThemeContext } from "../context/ThemeContext";
 import Instagram from "../commons/Instagram";
+import { NavbarSidebar } from "./sidebar";
 
 export default function Navbar() {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -33,26 +34,15 @@ export default function Navbar() {
           <img
             src={theme === "dark" ? logoLight : logoDark}
             alt="logoNav"
-            className="h-full "
+            className="h-full aspect-square"
           />
         </div>
       </div>
 
-      <div className="flex items-center gap-16 text-sm">
-        <div className="flex items-center gap-6">
-          <a href="#form" className="uppercase">
-            Agendá tu turno
-          </a>
-          <a href="#nosotros" className="uppercase">
-            Nosotros
-          </a>
-          <a href="#" className="uppercase">
-            Contacto
-          </a>
-        </div>
-        <div className=" text-xl flex gap-2 ">
-          <Instagram />
-        </div>
+      <div className="flex items-center gap-16 text-sm max-md:gap-4 max-md:flex-row-reverse  ">
+        <NavbarSidebar className="md:hidden " hidden={false} />
+        <NavbarSidebar className="max-md:hidden " hidden={true} />
+        <Instagram />
       </div>
     </nav>
   );

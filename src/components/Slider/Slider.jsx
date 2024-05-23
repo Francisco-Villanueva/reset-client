@@ -40,22 +40,22 @@ export const Slider = ({ images }) => {
 
   const buttonStyle = "transition-all duration-150 p-2 z-10 bg-blur-black ";
   return (
-    <div className="slider  w-full h-full   ">
+    <div className="slider  w-full h-full  ">
       <div
-        className="slide-wrapper flex  w-full"
+        className="slide-wrapper flex h-full w-full"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {images.map((image, i) => (
-          <div className="slide grid place-items-center" key={i}>
+          <div className="slide grid place-items-center h-full" key={i}>
             <img
               src={image}
               alt={`Slide ${currentIndex}`}
-              className="h-full aspect-video w-full  object-cover object-top  z-0 "
+              className="h-full aspect-video md:w-full   object-cover object-top  z-0 "
             />
           </div>
         ))}
       </div>
-      <div className="flex  gap-8 items-center justify-between h-full w-full   absolute top-0  bg-black/80 text-white">
+      <div className="flex  gap-8 items-center justify-between h-full w-full   absolute top-0  bg-black/80 max-md:bg-black/60 text-white">
         <button onClick={prevSlide} className={buttonStyle}>
           <ArrowLeftIcon />
         </button>

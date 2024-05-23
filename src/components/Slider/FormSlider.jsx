@@ -6,9 +6,9 @@ export function FormSlider() {
   const { step } = useStore();
 
   return (
-    <div className="slider  w-full h-full relative   ">
+    <div className="slider  w-full max-w-0  outline h-full relative    ">
       <div
-        className=" flex h-full  w-full  z-30 "
+        className=" flex h-full  w-full   z-30 "
         style={{
           transform: `translatex(-${step * 100}%)`,
           transition: "transform 0.1s ease",

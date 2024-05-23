@@ -22,11 +22,11 @@ export function FeedbackSlider() {
   const buttonStyle = "transition-all duration-150 p-2 z-10 bg-blur-black ";
   return (
     <div className="slider  w-full h-full relative   ">
-      <div className="absolute top-0 w-full">
+      <div className="absolute top-0 w-full h-full">
         <img
           src={"/landing/landing2.jpg"}
           alt={`reset salon hair studio`}
-          className="h-full aspect-video w-full  object-cover object-top  z-0  "
+          className=" h-full w-full object-cover  z-0  "
         />
       </div>
       <div
@@ -39,12 +39,14 @@ export function FeedbackSlider() {
             key={i}
           >
             <Stars stars={feedback.stars} />
-            <p className="italic font-normal text-lg w-1/2 text-center">
+            <p className="italic font-normal text-lg max-md:text-md w-1/2 text-center">
               " {feedback.feedback} "
             </p>
             <div className="flex flex-col items-center">
-              <UserIcon className="w-14 " />
-              <p className="font-semibold text-xl">{feedback.author}</p>
+              <UserIcon className="w-14 max-md:w-10" />
+              <p className="font-semibold text-xl max-md:text-md">
+                {feedback.author}
+              </p>
             </div>
           </div>
         ))}

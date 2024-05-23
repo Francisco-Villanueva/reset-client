@@ -5,7 +5,7 @@ import React from "react";
 export default function Instagram() {
   return (
     <a href="https://www.instagram.com/resetsalon_/">
-      <FontAwesomeIcon icon={faInstagram} className="" />
+      <FontAwesomeIcon icon={faInstagram} className="h-5" />
     </a>
   );
 }
