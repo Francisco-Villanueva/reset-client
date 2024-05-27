@@ -15,7 +15,7 @@ function AsideContainer({ children, sidebar }) {
     <div
       className={`${
         sidebar ? "translate-x-0 z-10" : "translate-x-full"
-      } absolute top-0 left-0  h-[100vh] w-[100vw] drop-shadow-xl bg-black/50 backdrop-blur-sm  `}
+      } fixed top-0 left-0  h-[100vh] w-[100vw] drop-shadow-xl bg-black/50 backdrop-blur-sm  `}
     >
       {children}
     </div>

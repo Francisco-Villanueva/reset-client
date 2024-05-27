@@ -39,7 +39,7 @@ export function FeedbackSlider() {
             key={i}
           >
             <Stars stars={feedback.stars} />
-            <p className="italic font-normal text-lg max-md:text-md w-1/2 text-center">
+            <p className="italic font-normal text-lg max-md:text-sm w-1/2 text-center  max-md:w-[80%]">
               " {feedback.feedback} "
             </p>
             <div className="flex flex-col items-center">

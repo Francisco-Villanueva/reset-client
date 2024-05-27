@@ -18,7 +18,7 @@ export default function SelectBarber() {
         <Loader />
       )}
 
-      <div className="absolute h-32 max-md:h-20 aspect-square  top-0 right-10">
+      <div className="absolute h-32 max-md:h-14 aspect-square  top-0 right-10 ">
         <img src="/RESET_C_negro.png" className="h-full w-full" />
       </div>
     </FormLayout>

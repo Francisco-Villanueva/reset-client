@@ -21,7 +21,7 @@ export default function Form() {
         <div className="h-[40%] bg-white "></div>
         <div className="h-[40%]  bg-black"></div>
       </div>
-      <div className="h-[75%] w-full flex justify-center  max-md:flex-col  max-md:items-center gap-2 outline  ">
+      <div className="h-[75%] max-md:h-[85%] w-full flex justify-center  max-md:flex-col  max-md:items-center gap-2 outline  ">
         <div className=" h-full max-md:h-1/2  max-md:hidden top-10 ">
           <img src={barberImage} className="h-full grayscale " />
         </div>
@@ -31,8 +31,8 @@ export default function Form() {
       </div>
       <AlertContent />
 
-      <div className=" m-auto w-2/3 absolute bottom-0 max-md:w-5/6  max-md:text-sm">
-        <p className="text-center text-white font-light uppercase">
+      <div className=" m-auto w-2/3 absolute bottom-0 max-md:w-[90%]  max-md:text-sm">
+        <p className="text-center text-white font-light uppercase ">
           Nuestro compromiso por ofrecer un servicio de alta calidad nos impulsa
           a superar y redefinir los estándares de la industria. Somos reset, el
           nuevo paradigma de la peluquería moderna.

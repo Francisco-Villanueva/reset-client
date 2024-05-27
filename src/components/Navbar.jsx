@@ -29,17 +29,24 @@ export default function Navbar() {
         scrolling ? "bg-white" : ""
       }`}
     >
-      <div className="flex  h-full    gap-2  items-center font-montserrat ">
-        <div className=" h-full flex items-center gap-2 ">
+      <div className="flex  h-full   max-md:w-full max-md:justify-center   gap-2  items-center font-montserrat ">
+        <div className=" h-full flex items-center gap-2 max-md:hidden ">
           <img
             src={theme === "dark" ? logoLight : logoDark}
             alt="logoNav"
             className="h-full aspect-square"
           />
         </div>
+        <div className="  md:hidden ">
+          <img
+            src={"/resetLargo.png"}
+            alt="reset Logo"
+            className=" h-10     "
+          />
+        </div>
       </div>
 
-      <div className="flex items-center gap-16 text-sm max-md:gap-4 max-md:flex-row-reverse  ">
+      <div className="flex items-center gap-16 text-sm max-md:gap-4 max-md:flex-row-reverse max-md:absolute max-md:right-4 ">
         <NavbarSidebar className="md:hidden " hidden={false} />
         <NavbarSidebar className="max-md:hidden " hidden={true} />
         <Instagram />
