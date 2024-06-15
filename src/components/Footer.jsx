@@ -9,15 +9,15 @@ export default function Footer() {
       className="p-10 max-md:p-4  bg-black text-white h-[40vh] max-md:h-[60vh] relative"
       id="footer"
     >
-      <div className=" flex gap-8 h-full">
-        <section className="flex max-md:flex-col-reverse gap-6 items-center h-full  max-md:w-1/2 max-md:justify-end ">
+      <div className=" flex max-md:flex-col gap-8 h-full">
+        <section className="flex max-md:flex-row  gap-6 items-center md:h-full   max-md:justify-center ">
           <div className="h-5/6 max-md:h-20">
             <img
               src="/RESET_C.png"
               className="h-full aspect-square object-cover "
             />
           </div>
-          <div className="flex flex-col text-sm items-start justify-center  max-md:justify-start  gap-4">
+          <div className="flex md:flex-col text-sm md:items-start justify-center   gap-4">
             <a href="#home" className="uppercase">
               Home
             </a>
@@ -36,7 +36,7 @@ export default function Footer() {
         <div className="h-full border max-md:hidden"></div>
 
         <div className="flex gap-8 h-full  max-md:flex-col flex-grow">
-          <section className="flex flex-col gap-6">
+          <section className="flex max-md:items-center max-md:justify-around md:flex-col gap-6">
             <div className="uppercase flex flex-col gap-2 items-start text-sm">
               <h2 className="font-semibold">horarios de atención</h2>
               <p>Martes a sábados : 10:00 - 20:00</p>
@@ -50,7 +50,7 @@ export default function Footer() {
           <section className="flex-grow">
             <Map />
           </section>
-          <section className="flex flex-col  text-white font-extralight text-xs uppercase justify-start gap-4">
+          <section className="flex md:flex-col max-md:justify-around  text-white font-extralight text-xs uppercase justify-start gap-4">
             <h2 className="font-semibold">Contacto</h2>
             <section className="flex flex-col ">
               <h2 className="font-bold">Gorriti 61</h2>
@@ -58,30 +58,40 @@ export default function Footer() {
               <span>Buenos Aires</span>
               <span>Argentina</span>
             </section>
-            <span>+54 291 5779-365</span>
+            <span>+54 9 291 419-1087</span>
           </section>
         </div>
+
+        <div className="md:h-full items-center justify-center flex">
+          <a
+            href="https://www.linkedin.com/in/francisco-villanueva-50708a226/"
+            className="font-semibold flex gap-4 justify-center items-center"
+          >
+            <span className="font-extralight text-light-grey">
+              Desarrollado por{" "}
+              <strong className="font-bold"> Villanueva, Francisco</strong>
+            </span>
+          </a>
+        </div>
       </div>
+      {/* <section className="h-full">
+        <a
+          href="https://www.linkedin.com/in/francisco-villanueva-50708a226/"
+          className="font-semibold flex gap-4 items-center"
+        >
+          <span className="font-extralight text-light-grey">
+            Desarrollado por{" "}
+            <strong className="font-bold"> Villanueva, Francisco</strong>
+          </span>
+        </a>
 
-      {/* <a
-        href="https://www.linkedin.com/in/francisco-villanueva-50708a226/"
-        className="font-semibold flex gap-4 items-center"
-      >
-        <span className="border rounded-full w-[2.2rem] h-[2.2rem]  grid place-items-center transition-all duration-200  hover:bg-white hover:text-black">
-          FV
-        </span>
-        <span className="font-extralight text-light-grey">
-          Desarrollado por{" "}
-          <strong className="font-bold"> Villanueva, Francisco</strong>
-        </span>
-      </a>
-
-      <div className="flex flex-col items-center   w-full text-md text-light-grey opacity-60  ">
-        <span>¿Problemas en el funcionamiento de la página?</span>
-        <span>
-          Reportar error a <strong>fvillanueva.dev@gmail.com</strong>
-        </span>
-      </div> */}
+        <div className="flex flex-col items-center   w-full text-md text-light-grey opacity-60  ">
+          <span>¿Problemas en el funcionamiento de la página?</span>
+          <span>
+            Reportar error a <strong>fvillanueva.dev@gmail.com</strong>
+          </span>
+        </div>
+      </section> */}
     </footer>
   );
 }
