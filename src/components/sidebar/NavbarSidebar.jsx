@@ -15,7 +15,7 @@ function AsideContainer({ children, sidebar }) {
     <div
       className={`${
         sidebar ? "translate-x-0 z-10" : "translate-x-full"
-      } fixed top-0 left-0  h-[100vh] w-[100vw] drop-shadow-xl bg-black/50 backdrop-blur-sm  `}
+      } fixed top-0 left-0  h-[100vh] w-[100vw] transition-all duration-300 drop-shadow-xl bg-black/50 backdrop-blur-sm  `}
     >
       {children}
     </div>
@@ -23,8 +23,8 @@ function AsideContainer({ children, sidebar }) {
 }
 export function NavbarSidebar({ hidden = true, className = "" }) {
   const [sidebar, setSidebar] = useState(false);
-
   const toggleSideBar = () => setSidebar(!sidebar);
+
   return hidden ? (
     <div className={`flex gap-4  ${className}}`}>
       <a href="#form" className="uppercase">
@@ -44,11 +44,19 @@ export function NavbarSidebar({ hidden = true, className = "" }) {
       </button>
       <AsideContainer sidebar={sidebar}>
         <aside
-          className={`flex flex-col   border gap-6 absolute h-[100vh] top-0 right-0 bg-white py-10 px-4 text-lg transition-all duration-200 ${
+          className={`flex flex-col   border gap-6 absolute h-[100vh]  w-full top-0 right-0 bg-white py-10 px-4 text-lg transition-all duration-200 ${
             sidebar ? "translate-x-0 z-50" : "translate-x-full"
           }`}
         >
-          <h2 className="font-semibold border-b">MENU</h2>
+          <div className=" py-2 flex justify-between items-center border-b ">
+            <h2 className="font-semibold ">MENU</h2>
+            <button
+              className="font-bold rounded-md bg-light-grey select-none text-2xl px-2"
+              onClick={toggleSideBar}
+            >
+              x
+            </button>
+          </div>
 
           <div className="flex flex-col gap-4">
             <a
@@ -70,13 +78,6 @@ export function NavbarSidebar({ hidden = true, className = "" }) {
               Contacto
             </a>
           </div>
-
-          <button
-            className="border rounded-full hover:bg-light-grey"
-            onClick={toggleSideBar}
-          >
-            x
-          </button>
 
           <div className="absolute text-center right-5 bottom-0 uppercase text-black/50">
             Reset Salon ®️{" "}

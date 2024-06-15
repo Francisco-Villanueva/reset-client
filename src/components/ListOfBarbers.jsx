@@ -5,7 +5,7 @@ export default function ListOfBarbers({ barberos = [] }) {
   const { turnoData } = useStore();
 
   return (
-    <div className={`  flex flex-col gap-2 w-[60%]  max-md:w-[90%]  `}>
+    <div className={`  flex flex-col gap-2 w-[60%]  max-md:w-full   `}>
       {barberos
         .sort((a, b) => a.id - b.id)
         .map((barber) => (

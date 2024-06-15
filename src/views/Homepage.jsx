@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 
 export function Homepage() {
   return (
-    <div className="">
+    <div className="bg-black min-h-[100vh]">
       <Home />
       <Form />
       <AboutUs />

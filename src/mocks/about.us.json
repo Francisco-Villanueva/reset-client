@@ -1,14 +1,17 @@
 {
   "aboutus": [
     {
+      "image": "/svg/exelencia.svg",
       "title": "excelencia",
       "description": "Ofrecemos servicios de peluquería de primera clase. Nuestro      compromiso por mantenernos a la vanguardia de la industria nos      permite garantizar resultados excepcionales en cada visita."
     },
     {
+      "image": "/svg/garantia.svg",
       "title": "garantía",
       "description": "       Cada experiencia en nuestro salón está respaldada por la calidad      de nuestros servicios. Nos aseguramos de que nuestros clientes se      sientan seguros, con la certeza de que siempre obtendrán      resultados que superen sus expectativas."
     },
     {
+      "image": "/svg/profesionalismo.svg",
       "title": "profesionalismo",
       "description": "   En Reset Salon, mantenemos altos estándares de profesionalismo.      Nuestro equipo está compuesto por estilistas en constante      capacitación que brindan, en todo momento, un servicio de alta      calidad."
     }

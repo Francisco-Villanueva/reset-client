@@ -6,7 +6,7 @@ import { Map } from "./maps";
 export default function Footer() {
   return (
     <footer
-      className="p-10 max-md:p-4  bg-black text-white h-[40vh] max-md:h-[60vh]"
+      className="p-10 max-md:p-4  bg-black text-white h-[40vh] max-md:h-[60vh] relative"
       id="footer"
     >
       <div className=" flex gap-8 h-full">

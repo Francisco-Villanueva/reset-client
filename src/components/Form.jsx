@@ -3,17 +3,14 @@ import FormContent from "./FormContent";
 import AlertContent from "./AlertContent";
 import FormBody from "./FormBody";
 import { useStore } from "../context/BarberContext";
+import BarberImage from "../commons/BarberImage";
 
 export default function Form() {
   const { selectedBarber, barberos } = useStore();
 
-  const barberImage = selectedBarber.id
-    ? `/barbers/barber${barberos.indexOf(selectedBarber) + 1}.jpg`
-    : "/barbers/barber1.jpg";
-
   return (
     <Layout
-      className=" h-[100vh]  relative   flex justify-center items-center gap-4   pt-5  "
+      className=" bg-black h-[100vh]  relative   flex justify-center items-center gap-4   pt-5  "
       id={"form"}
     >
       <div className="h-full absolute w-full">
@@ -23,7 +20,10 @@ export default function Form() {
       </div>
       <div className="h-[75%] max-md:h-[85%] w-full flex justify-center  max-md:flex-col  max-md:items-center gap-2 outline  ">
         <div className=" h-full max-md:h-1/2  max-md:hidden top-10 ">
-          <img src={barberImage} className="h-full grayscale " />
+          <BarberImage
+            barber={selectedBarber ? selectedBarber : barberos[0]}
+            className="h-full grayscale "
+          />
         </div>
         <FormBody>
           <FormContent />
@@ -31,7 +31,7 @@ export default function Form() {
       </div>
       <AlertContent />
 
-      <div className=" m-auto w-2/3 absolute bottom-0 max-md:w-[90%]  max-md:text-sm">
+      <div className=" m-auto w-2/3 absolute bottom-0 max-md:w-[90%] pb-4 max-md:text-sm">
         <p className="text-center text-white font-light uppercase ">
           Nuestro compromiso por ofrecer un servicio de alta calidad nos impulsa
           a superar y redefinir los estándares de la industria. Somos reset, el

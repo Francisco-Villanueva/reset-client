@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import logoLight from "../images/RESET_C.png";
 import logoDark from "../images/RESET_C_negro.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { ThemeContext } from "../context/ThemeContext";
 import Instagram from "../commons/Instagram";
 import { NavbarSidebar } from "./sidebar";
@@ -25,8 +23,10 @@ export default function Navbar() {
   }, []);
   return (
     <nav
-      className={`flex  bg-white h-[10vh] fixed p-2 rounded-sm shadow-2xl border-b z-10  justify-between  items-center w-full px-[3rem] ${theme} ${
-        scrolling ? "bg-white" : ""
+      className={`flex   h-[10vh] fixed p-2 rounded-sm shadow-2xl  z-10  justify-between  items-center w-full px-[3rem]  transition-all duration-300 ${
+        scrolling
+          ? "bg-white border-b translate-y-[0%]"
+          : " text-white bg-transparent translate-y-[-100%]"
       }`}
     >
       <div className="flex  h-full   max-md:w-full max-md:justify-center   gap-2  items-center font-montserrat ">

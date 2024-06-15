@@ -18,7 +18,7 @@ export function AboutUsSlider() {
   const buttonStyle =
     "transition-all duration-150 p-2  bg-black/50 rounded-full ";
   return (
-    <div className="slider  w-full h-full relative   ">
+    <div className="slider  w-full h-full relative bg-white   ">
       <div
         className="slide-wrapper flex h-full  w-full  z-30 "
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -27,8 +27,8 @@ export function AboutUsSlider() {
           <div className="  min-w-full flex justify-center ">
             <div className="flex flex-col items-start max-md:items-center gap-4  w-1/2 justify-center ">
               <img
-                src="/RESET_C_negro.png"
-                className="h-24 aspect-square  max-md:h-16"
+                src={about.image}
+                className="h-32 aspect-square  max-md:h-24"
               />
               <div className="flex flex-col gap-4 max-md:gap-1 text-md ">
                 <h2 className="uppercase font-bold text-start ">
