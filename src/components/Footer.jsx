@@ -11,10 +11,10 @@ export default function Footer() {
     >
       <div className=" flex max-md:flex-col gap-8 h-full">
         <section className="flex max-md:flex-row  gap-6 items-center md:h-full   max-md:justify-center ">
-          <div className="h-5/6 max-md:h-20">
+          <div className="h-5/6 max-md:h-20 flex items-center">
             <img
               src="/RESET_C.png"
-              className="h-full aspect-square object-cover "
+              className="h-full max-md:h-[60%] aspect-square object-cover "
             />
           </div>
           <div className="flex md:flex-col text-sm md:items-start justify-center   gap-4">
@@ -47,12 +47,12 @@ export default function Footer() {
             </div>
           </section>
 
-          <section className="flex-grow">
+          <section className="md:flex-grow max-md:h-44">
             <Map />
           </section>
           <section className="flex md:flex-col max-md:justify-around  text-white font-extralight text-xs uppercase justify-start gap-4">
-            <h2 className="font-semibold">Contacto</h2>
-            <section className="flex flex-col ">
+            <h2 className="font-semibold max-md:hidden">Contacto</h2>
+            <section className="flex flex-col  ">
               <h2 className="font-bold">Gorriti 61</h2>
               <span>Bahía Blanca</span>
               <span>Buenos Aires</span>
