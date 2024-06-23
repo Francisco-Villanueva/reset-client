@@ -16,7 +16,7 @@ export default function BarberCard({ barber, className = "", selected }) {
       onClick={handleSelectBarber}
     >
       <div
-        className={`w-[1rem]  max-md:w-[75px] rounded-full aspect-square  ${
+        className={`w-[1rem]  max-md:w-[60px] rounded-full aspect-square  ${
           selected ? "bg-white text-black" : "bg-black"
         } rounded-full `}
       >

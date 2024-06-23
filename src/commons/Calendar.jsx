@@ -16,21 +16,24 @@ export default function Calendar({ value, disabled }) {
     return condition_1;
   };
 
+  const handleSelectDate = (newValue) => {
+    console.log({ DATE: newValue.$d });
+    handleTurnoData("date", newValue.$d);
+    setValue(newValue);
+    setStep(2);
+  };
+
   return (
-    <div className=" h-full  w-full   overflow-hidden ">
+    <div className=" h-[full]  w-full   overflow-hidden ">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateCalendar
           shouldDisableDate={handleDisableDates}
           dayOfWeekFormatter={(date) => getWeeksDay(date)}
           value={localDate}
-          onChange={(newValue) => {
-            handleTurnoData("date", newValue.$d);
-            setValue(newValue);
-            setStep(2);
-          }}
+          onChange={handleSelectDate}
           disabled={disabled}
           minDate={dayjs(new Date())}
-          className="w-full "
+          className="w-full h-1/2 "
         />
       </LocalizationProvider>
     </div>

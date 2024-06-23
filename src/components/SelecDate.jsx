@@ -11,8 +11,8 @@ export default function SelecDate() {
     handleTurnoData("time", "");
   }, []);
   return (
-    <FormLayout className=" flex items-center h-[90%]   ">
-      <Calendar value={turnoData.date} disabled={turnoData.barberId === ""} />
-    </FormLayout>
+    <Calendar value={turnoData.date} disabled={turnoData.barberId === ""} />
+    // <FormLayout className="  outline   ">
+    // </FormLayout>
   );
 }

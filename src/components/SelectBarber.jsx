@@ -7,7 +7,7 @@ import Loader from "./Loader";
 export default function SelectBarber() {
   const { barberos } = useStore();
   return (
-    <FormLayout className=" flex items-center h-[90%]   ">
+    <FormLayout className=" flex items-center h-[90%]  ">
       {barberos ? (
         barberos.length === 0 ? (
           <Loader />

@@ -18,7 +18,7 @@ export default function Input({
   const inputType = showPassword ? "text" : type;
 
   return (
-    <div className={`relative  h-[95px]  `}>
+    <div className={`relative    `}>
       <label className="block text-black  font-semibold">{title}</label>
       <input
         value={value}

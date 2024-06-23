@@ -35,7 +35,7 @@ export function FeedbackSlider() {
       >
         {feedbacks.map((feedback, i) => (
           <div
-            className="min-w-full uppercase  flex flex-col justify-center items-center gap-8 text-white z-30  bg-black/80  "
+            className="min-w-full uppercase  p-20 flex flex-col justify-center items-center gap-8 text-white z-30  bg-black/80  "
             key={i}
           >
             <Stars stars={feedback.stars} />
@@ -61,7 +61,7 @@ export function FeedbackSlider() {
         </button>
       </div>
 
-      <div className="flex  gap-1 items-center justify-center h-5 w-full   absolute bottom-0   text-white">
+      <div className="flex  gap-1 items-center justify-center h-5 w-full   absolute bottom-0  p  text-white">
         {feedbacks.map((image, i) => (
           <div
             className={`border  w-10 transition-all duration-300 ${
