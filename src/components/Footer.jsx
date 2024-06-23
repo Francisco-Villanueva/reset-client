@@ -10,11 +10,11 @@ export default function Footer() {
       id="footer"
     >
       <div className=" flex max-md:flex-col gap-8 h-full">
-        <section className="flex max-md:flex-row  gap-6 items-center md:h-full   max-md:justify-center ">
-          <div className="h-[70%] max-md:h-20 flex items-center">
+        <section className="flex max-md:flex-col  md:gap-6 items-center md:h-full   max-md:justify-center ">
+          <div className="h-[70%] max-md:h-40 flex items-center">
             <img
-              src="/RESET_C.png"
-              className="h-full w-full max-md:h-[60%] aspect-square object-contain "
+              src="/resetLargoBlanco.png"
+              className="h-full w-full max-md:h-[100%] aspect-square object-contain "
             />
           </div>
           <div className="flex md:flex-col text-sm md:items-start justify-center   gap-4">
@@ -35,7 +35,7 @@ export default function Footer() {
 
         <div className="h-full border max-md:hidden"></div>
 
-        <div className="flex gap-8 h-full  max-md:flex-col flex-grow">
+        <div className="flex gap-8 h-full  max-md:flex-col  max-md:justify-center max-md:gap-14 flex-grow">
           <section className="flex max-md:items-center max-md:justify-around md:flex-col gap-6">
             <div className="uppercase flex flex-col gap-2 items-start text-sm">
               <h2 className="font-semibold">horarios de atención</h2>

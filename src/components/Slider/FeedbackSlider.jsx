@@ -35,7 +35,7 @@ export function FeedbackSlider() {
       >
         {feedbacks.map((feedback, i) => (
           <div
-            className="min-w-full uppercase  p-20 flex flex-col justify-center items-center gap-8 text-white z-30  bg-black/80  "
+            className="min-w-full uppercase  py-20 flex flex-col justify-center items-center gap-8 text-white z-30  bg-black/80  "
             key={i}
           >
             <Stars stars={feedback.stars} />
