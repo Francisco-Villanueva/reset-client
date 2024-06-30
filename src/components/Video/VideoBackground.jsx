@@ -15,7 +15,7 @@ const VideoBackground = ({ videoSrc }) => {
     }
   }, []);
   return (
-    <div className="video-container">
+    <div className="video-container opacity-50">
       <video autoPlay loop muted className="video" playsInline ref={videoRef}>
         <source src={videoSrc} type="video/mp4" />
       </video>

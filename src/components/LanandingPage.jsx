@@ -10,7 +10,7 @@ export default function LanandingPage() {
       id="home"
     >
       <div className="  h-full  w-full    flex justify-center items-center max-md:flex-col">
-        <div className="h-[100vh] w-[100vw] fixed top-0  ">
+        <div className="h-[100vh] w-[100vw] fixed top-0   ">
           {windowWidth > 600 && (
             <VideoBackground videoSrc={"/landing/wide.mp4"} />
           )}
@@ -19,7 +19,7 @@ export default function LanandingPage() {
           )}
         </div>
 
-        <section className=" absolute top-0  h-full flex flex-col gap-8 items-center justify-center   w-full   bg-black/50  text-white    ">
+        <section className=" absolute top-0  h-full flex flex-col gap-8 items-center justify-center   w-full     text-white    ">
           <div className="">
             <img
               src={"/resetLargoBlanco.png"}
@@ -28,7 +28,7 @@ export default function LanandingPage() {
             />
           </div>
           <div className=" w-5/6  py-2 ">
-            <p className="text-center max-md:font-light  max-md:text-[10px]  uppercase">
+            <p className="text-center max-md:font-light  max-md:text-[12px]  uppercase">
               Somos un salón especializado en la imágen masculina. A través de
               un enfoque único que combina técnicas vanguardistas y un profundo
               dominio teórico, asesoramos a nuestros clientes para crear estilos
