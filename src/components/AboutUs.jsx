@@ -16,7 +16,7 @@ export default function AboutUs() {
               <div className="flex flex-col items-start gap-4   ">
                 <img src={about.image} className="h-32 aspect-square " />
                 <div className="flex flex-col gap-4">
-                  <h2 className="uppercase font-bold text-start ">
+                  <h2 className="uppercase font-bold text-start  ">
                     {about.title}
                   </h2>
                   <p className=" w-full text-md">{about.description}</p>
