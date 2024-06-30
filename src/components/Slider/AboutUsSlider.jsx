@@ -25,7 +25,7 @@ export function AboutUsSlider() {
       >
         {aboutus.map((about, i) => (
           <div className="  min-w-full  flex justify-center ">
-            <div className="flex flex-col    max-md:items-center gap-4 pb-10 w-1/2 justify-center ">
+            <div className="flex flex-col    max-md:items-center gap-4 pb-10 w-2/3 border justify-center ">
               <img
                 src={about.image}
                 className="h-32 aspect-square   max-md:h-24"
