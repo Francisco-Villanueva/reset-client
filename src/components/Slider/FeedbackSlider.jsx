@@ -60,19 +60,6 @@ export function FeedbackSlider() {
           <ArrowRightIcon />
         </button>
       </div>
-
-      <div className="flex  gap-1 items-center justify-center h-5 w-full   absolute bottom-0  p  text-white">
-        {feedbacks.map((image, i) => (
-          <div
-            className={`border  w-10 transition-all duration-300 ${
-              i === currentIndex
-                ? "scale-y-125 scale-x-105 border-white"
-                : "border-dark-grey"
-            } `}
-            key={i}
-          />
-        ))}
-      </div>
     </div>
   );
 }
