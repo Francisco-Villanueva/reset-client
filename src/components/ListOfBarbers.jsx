@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
 import BarberCard from "../commons/BarberCard";
 import { useStore } from "../context/BarberContext";
 
-export default function ListOfBarbers({ className = "", barberos = [] }) {
+export default function ListOfBarbers({ barberos = [] }) {
   const { turnoData } = useStore();
 
   return (
-    <div className={`  ${className} scrollStyle `}>
+    <div className={`  flex flex-col gap-2 w-[60%]  max-md:w-full   `}>
       {barberos
         .sort((a, b) => a.id - b.id)
         .map((barber) => (

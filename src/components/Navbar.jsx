@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import logoLight from "../images/RESET_C.png";
 import logoDark from "../images/RESET_C_negro.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { ThemeContext } from "../context/ThemeContext";
-import SwitchTheme from "./SwitchTheme";
-export default function Navbar({ className = "" }) {
+import Instagram from "../commons/Instagram";
+import { NavbarSidebar } from "./sidebar";
+
+export default function Navbar() {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [scrolling, setScrolling] = useState(false);
 
@@ -23,37 +23,33 @@ export default function Navbar({ className = "" }) {
   }, []);
   return (
     <nav
-      className={`${className} flex   justify-between  items-center w-full px-[3rem] ${theme} ${
-        scrolling ? "bg-white" : ""
+      className={`flex   h-[10vh] fixed p-2 rounded-sm shadow-2xl  z-10  justify-between  items-center w-full px-[3rem]  transition-all duration-300 ${
+        scrolling
+          ? "bg-white border-b translate-y-[0%]"
+          : " text-white bg-transparent translate-y-[-100%]"
       }`}
     >
-      <div className="flex  h-full    gap-2  items-center font-montserrat ">
-        <div className=" h-full flex items-center gap-2 ">
+      <div className="flex  h-full   max-md:w-full max-md:justify-center   gap-2  items-center font-montserrat ">
+        <div className=" h-full flex items-center gap-2 max-md:hidden ">
           <img
             src={theme === "dark" ? logoLight : logoDark}
             alt="logoNav"
-            className="h-full "
+            className="h-full aspect-square"
+          />
+        </div>
+        <div className="  md:hidden ">
+          <img
+            src={"/resetLargo.png"}
+            alt="reset Logo"
+            className=" h-10     "
           />
         </div>
       </div>
-      {/* <div className="flex w-[40%] gap-2   justify-around text-md ">
-        {["Home", "Nosotros", "Servicios", "Encontranos"].map((item, i) => (
-          <p
-            key={i}
-            className="cursor-pointer  transition-all duration-150  font-semibold text-[1rem]  hover:scale-[1.2]"
-          >
-            {item}
-          </p>
-        ))}
-      </div> */}
 
-      <div className={`   text-2xl flex gap-2 "text-black" `}>
-        <a href="https://www.instagram.com/resetsalon_/">
-          <FontAwesomeIcon icon={faInstagram} className="w-[1rem]" />
-        </a>
-        <a href="https://www.facebook.com/ResetHS/">
-          <FontAwesomeIcon icon={faFacebook} className="w-[1rem]" />
-        </a>
+      <div className="flex items-center gap-16 text-sm max-md:gap-4 max-md:flex-row-reverse max-md:absolute max-md:right-4 ">
+        <NavbarSidebar className="md:hidden " hidden={false} />
+        <NavbarSidebar className="max-md:hidden " hidden={true} />
+        <Instagram />
       </div>
     </nav>
   );

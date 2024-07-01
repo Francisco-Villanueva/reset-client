@@ -22,16 +22,38 @@ function validator(type) {
 
     return null;
   };
+  const phoneNumberValidatior = (value) => {
+    const phoneNumberRegex = /^\d{7,15}$/; // Expresión regular para validar un número de teléfono de 7 a 15 dígitos
+
+    if (!phoneNumberRegex.test(value)) {
+      return "Por favor ingresa un número de teléfono válido.";
+    }
+
+    return null;
+  };
 
   const fullNameValidator = (value) => {
-    if (value.length < 1) {
-      return "This field is required";
+    const onlyLettersRegex = /^[a-zA-Z\s]*$/; // Expresión regular para permitir solo letras y espacios
+    const containsNumbersRegex = /[0-9]/; // Expresión regular para verificar números
+    const wordsRegex = /^\S+\s+\S+$/; // Expresión regular para verificar al menos dos palabras
+
+    if (containsNumbersRegex.test(value)) {
+      return "Este campo no debe contener números.";
     }
+
+    if (!onlyLettersRegex.test(value)) {
+      return "Este campo debe contener solo letras y espacios.";
+    }
+
+    if (!wordsRegex.test(value) && value.length > 2) {
+      return "Por favor ingresa tanto el nombre como el apellido.";
+    }
+
     return null;
   };
 
   switch (type) {
-    case "required": {
+    case "fullName": {
       return fullNameValidator;
     }
     case "password": {
@@ -39,6 +61,9 @@ function validator(type) {
     }
     case "email": {
       return emailValidator;
+    }
+    case "phoneNumber": {
+      return phoneNumberValidatior;
     }
 
     default:
@@ -55,6 +80,12 @@ export default function useInput(initialValue, type, isOptionInput = false) {
 
   const onChange = (e) => {
     setValue(e.target.value);
+    if (validateFunction) {
+      setTouched(true);
+      !isOptionInput
+        ? setError(validateFunction(e.target.value))
+        : setError(validateFunction(selectedOption));
+    }
   };
   const handleOption = (option) => {
     setSelectedOption(option);
@@ -72,7 +103,6 @@ export default function useInput(initialValue, type, isOptionInput = false) {
 
   const onFocus = () => {
     setTouched(false);
-    setError(null);
   };
   const clarInput = () => {
     setValue("");

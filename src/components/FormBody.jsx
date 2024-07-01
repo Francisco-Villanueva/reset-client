@@ -11,8 +11,8 @@ export default function FormBody({ children }) {
     useStore();
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    if (barberos.length) {
-      getHorarios(turnoData.barberId, turnoData.date);
+    if (barberos.length && turnoData.barberId && turnoData.date) {
+      // getHorarios(turnoData.barberId, turnoData.date);
     }
   }, [turnoData]);
   const handleStep = (move) => {
@@ -44,25 +44,30 @@ export default function FormBody({ children }) {
     <>
       {step !== 4 && step !== 5 ? (
         <form
-          className=" relative border flex flex-col justify-between   h-[80%] w-[90%] md:w-[40rem] md:h-[80%]    bg-white shadow-lg    p-4 rounded-md "
+          className=" relative border flex flex-col justify-between    h-full max-md:h-[80%]  w-[90%]  md:w-[40rem] max-md:text-sm     bg-white shadow-lg    p-4 "
           onSubmit={handleSubmit}
         >
-          <header className="    ">
-            <h2 className="text-[2rem] m-auto my-0">SACAR TURNO</h2>
+          <header className="  h-[20%]   ">
+            <h2 className="text-2xl max-md:text-lg  my-0 font-light uppercase">
+              Agendá tu turno
+            </h2>
+            <div className="border border-black w-1/2 mb-1 max-md:w-1/3" />
             <ProgressBar />
           </header>
 
-          <section className="   h-[85%]  ">{children}</section>
+          <section className="   h-[80%]  ">{children}</section>
           <Pagination
             step={step}
             limit={turnoProgress}
             handleStep={handleStep}
           />
           {loading && (
-            <div className="top-0 left-0 h-full w-full  backdrop-blur-[4px] bg-[rgba(255,255,255,.1)] absolute grid place-items-center ">
-              <div>
+            <div className="top-0 left-0 h-full w-full  backdrop-blur-[4px] bg-[rgba(255,255,255,.8)] absolute grid place-items-center ">
+              <div className="flex flex-col gap-4">
                 <Loader />
-                <strong className="text-selected">Cargando truno </strong>
+                <strong className="text-dark-grey uppercase font-normal">
+                  Cargando truno
+                </strong>
               </div>
             </div>
           )}
