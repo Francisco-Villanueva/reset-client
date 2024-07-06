@@ -33,6 +33,8 @@ function validator(type) {
   };
 
   const fullNameValidator = (value) => {
+    return null;
+    //NO SE HACEN LAS VALIDACIONES SOBRE FULL NAME
     const onlyLettersRegex = /^[a-zA-Z\s]*$/; // Expresión regular para permitir solo letras y espacios
     const containsNumbersRegex = /[0-9]/; // Expresión regular para verificar números
     const wordsRegex = /^\S+\s+\S+$/; // Expresión regular para verificar al menos dos palabras
