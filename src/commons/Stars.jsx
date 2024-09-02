@@ -36,7 +36,7 @@ export default function Stars({ stars }) {
   return (
     <div className="flex items-center  gap-2">
       {[1, 2, 3, 4, 5].map((value) => (
-        <div className="">
+        <div className="" key={value}>
           {value > stars ? <StartEmpty /> : <StartFilled />}
         </div>
       ))}
