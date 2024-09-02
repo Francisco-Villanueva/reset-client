@@ -28,4 +28,9 @@ export class ApiServices {
       `${API_URL}/barbers/${barberId}/`
     );
   }
+  static async createCustomer(data) {
+    return await axios.post(
+      `${API_URL}/customers`, data
+    );
+  }
 }

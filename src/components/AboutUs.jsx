@@ -13,7 +13,10 @@ export default function AboutUs() {
         <section className=" bg-white max-md:hidden   relative  flex items-center justify-center py-8 ">
           <section className=" h-full w-3/4  grid grid-cols-3 gap-4     max-md:hidden  ">
             {aboutus.map((about) => (
-              <div className="flex flex-col items-start gap-4   ">
+              <div
+                className="flex flex-col items-start gap-4   "
+                key={about.description}
+              >
                 <img src={about.image} className="h-32 aspect-square " />
                 <div className="flex flex-col gap-4">
                   <h2 className="uppercase font-bold text-start  ">
