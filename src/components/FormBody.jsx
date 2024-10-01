@@ -66,7 +66,7 @@ export default function FormBody({ children }) {
               <div className="flex flex-col gap-4">
                 <Loader />
                 <strong className="text-dark-grey uppercase font-normal">
-                  Cargando truno
+                  Cargando turno
                 </strong>
               </div>
             </div>
