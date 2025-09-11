@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = 'https://vps-3803466-x.dattaweb.com/api'
 export class ApiServices {
   static async getAllBarbers() {
     return await axios.get(`${API_URL}/barbers/active/`);
