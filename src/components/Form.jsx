@@ -1,5 +1,6 @@
 import Layout from "../commons/Layout";
 export default function Form() {
+  // this page has the agenda of agenda pro
   return (
     <Layout
       className=" bg-white relative h-[180vh]  flex justify-center items-center gap-4  pt-14 max-md:pt-0   "
